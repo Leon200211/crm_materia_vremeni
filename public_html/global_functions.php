@@ -21,5 +21,9 @@ function calculate_the_cost_of_sewing($connect, $id_order){
 
     return $sum;
 
+}
+
+
+function show_normal_price(){
 
 }

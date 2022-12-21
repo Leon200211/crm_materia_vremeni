@@ -177,7 +177,7 @@ if(@!isset($_POST['supplier_price_0'])){
                     <td class="tb_title_info"><input type="text" class="input_style" name="supplier_price_<?=$i?>" size="20" value="<?= $info_pink_order_while['supplier_price']?>"></p></td>
 
 
-                    
+
                     <?php
                     if($info_pink_order_while['supplier_price'] != 0){
 

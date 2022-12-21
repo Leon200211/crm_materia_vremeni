@@ -92,7 +92,7 @@ $specification = $sketches_main['specification'];
     </div>
 
     <div class="main_field_div_sketches">
-        <h1>Поиск ткани:</h1>
+        <h1>Информация о позиции:</h1>
         <form method="post">
             <div class="live_search_all">
                 <div class="live_search_new">
@@ -345,7 +345,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
 
                     // в зависимости от типа ткани
                     // будет вывод из определенной базы данных
-                    $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                    $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room'  AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                     $select = mysqli_query($connect, $sql);
                     while ($select_while = mysqli_fetch_assoc($select)) {
                         ?>
@@ -371,7 +371,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
 
                     // в зависимости от типа ткани
                     // будет вывод из определенной базы данных
-                    $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                    $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                     $select = mysqli_query($connect, $sql);
                     while ($select_while = mysqli_fetch_assoc($select)) {
                         ?>
@@ -397,7 +397,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
 
                     // в зависимости от типа ткани
                     // будет вывод из определенной базы данных
-                    $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                    $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room'  AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                     $select = mysqli_query($connect, $sql);
                     while ($select_while = mysqli_fetch_assoc($select)) {
                         ?>
@@ -460,7 +460,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
 
                         // в зависимости от типа ткани
                         // будет вывод из определенной базы данных
-                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                         $select = mysqli_query($connect, $sql);
                         while ($select_while = mysqli_fetch_assoc($select)) {
                             ?>
@@ -486,7 +486,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
 
                         // в зависимости от типа ткани
                         // будет вывод из определенной базы данных
-                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                         $select = mysqli_query($connect, $sql);
                         while ($select_while = mysqli_fetch_assoc($select)) {
                             ?>
@@ -512,7 +512,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
 
                         // в зависимости от типа ткани
                         // будет вывод из определенной базы данных
-                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                         $select = mysqli_query($connect, $sql);
                         while ($select_while = mysqli_fetch_assoc($select)) {
                             ?>
@@ -592,7 +592,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
 
                         // в зависимости от типа ткани
                         // будет вывод из определенной базы данных
-                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                         $select = mysqli_query($connect, $sql);
                         while ($select_while = mysqli_fetch_assoc($select)) {
                             ?>
@@ -618,7 +618,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
 
                         // в зависимости от типа ткани
                         // будет вывод из определенной базы данных
-                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                         $select = mysqli_query($connect, $sql);
                         while ($select_while = mysqli_fetch_assoc($select)) {
                             ?>
@@ -643,7 +643,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                         }
                         // в зависимости от типа ткани
                         // будет вывод из определенной базы данных
-                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                         $select = mysqli_query($connect, $sql);
                         while ($select_while = mysqli_fetch_assoc($select)) {
                             ?>
@@ -687,7 +687,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                                 }
                                 // в зависимости от типа ткани
                                 // будет вывод из определенной базы данных
-                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                                 $select = mysqli_query($connect, $sql);
                                 while ($select_while = mysqli_fetch_assoc($select)) {
                                     ?>
@@ -730,7 +730,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                                 }
                                 // в зависимости от типа ткани
                                 // будет вывод из определенной базы данных
-                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                                 $select = mysqli_query($connect, $sql);
                                 while ($select_while = mysqli_fetch_assoc($select)) {
                                     ?>
@@ -799,7 +799,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                                 }
                                 // в зависимости от типа ткани
                                 // будет вывод из определенной базы данных
-                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                                 $select = mysqli_query($connect, $sql);
                                 while ($select_while = mysqli_fetch_assoc($select)) {
                                     ?>
@@ -826,7 +826,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                                 }
                                 // в зависимости от типа ткани
                                 // будет вывод из определенной базы данных
-                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                                 $select = mysqli_query($connect, $sql);
                                 while ($select_while = mysqli_fetch_assoc($select)) {
                                     ?>
@@ -853,7 +853,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                                 }
                                 // в зависимости от типа ткани
                                 // будет вывод из определенной базы данных
-                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                                $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                                 $select = mysqli_query($connect, $sql);
                                 while ($select_while = mysqli_fetch_assoc($select)) {
                                     ?>
@@ -914,7 +914,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                             }
                             // в зависимости от типа ткани
                             // будет вывод из определенной базы данных
-                            $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                            $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                             $select = mysqli_query($connect, $sql);
                             while ($select_while = mysqli_fetch_assoc($select)) {
                                 ?>
@@ -939,7 +939,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                             }
                             // в зависимости от типа ткани
                             // будет вывод из определенной базы данных
-                            $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                            $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                             $select = mysqli_query($connect, $sql);
                             while ($select_while = mysqli_fetch_assoc($select)) {
                                 ?>
@@ -964,7 +964,7 @@ if($specification == 'портьеры|тюли|подхваты|тп') {
                             }
                             // в зависимости от типа ткани
                             // будет вывод из определенной базы данных
-                            $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                            $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' AND `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                             $select = mysqli_query($connect, $sql);
                             while ($select_while = mysqli_fetch_assoc($select)) {
                                 ?>

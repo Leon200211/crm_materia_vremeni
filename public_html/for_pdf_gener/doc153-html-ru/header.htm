@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<title>Header</title>
+<link type="text/css" rel="stylesheet" href="fpdf.css">
+</head>
+<body>
+<h1>Header</h1>
+<code>Header()</code>
+<h4 class='st'>Версия</h4>
+1.0
+<h4 class='st'>Описание</h4>
+Этот метод используется для задания заголовка страницы. Он автоматически вызывается
+методом AddPage(), так что его не обязательно вызывать неосредственно из приложения.
+Реализация этого метода в FPDF пуста, поэтому если нужно задать специфическую обработку,
+нужно переписать этот метод.
+<h4 CLASS='st'>Пример</h4>
+<div class="doc-source">
+<pre><code>class PDF extends FPDF
+{
+function Header()
+{
+    //выбираем Arial размера 15
+    $this-&gt;SetFont('Arial','B',15);
+    //Передвигаемся вправо
+    $this-&gt;Cell(80);
+    //Заголовок с границами
+    $this-&gt;Cell(30,10,'Title',1,0,'C');
+    //Разрыв строки
+    $this-&gt;Ln(20);
+}
+}</code></pre>
+</div>
+<h4 class='st'>См. также</h4>
+<a href="footer.htm">Footer()</a>.
+<hr style="margin-top:1.5em">
+<div style="text-align:center"><a href="index.htm">Оглавление</a></div>
+</body>
+</html>

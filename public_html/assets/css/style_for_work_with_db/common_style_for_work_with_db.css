@@ -1,0 +1,72 @@
+.db_main_body{
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: black;
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+
+    padding-left: 50px;
+    padding-bottom: 50px;
+    padding-right: 50px;
+
+
+}
+
+
+
+.room_list_choice_db{
+    margin-top: 30px;
+}
+.common_button_room_list_db{
+    display: block;
+    width: 250px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: #4F4F4F;
+    border: 1px solid #E3674F; /* Белая рамка */
+    border-radius: 7px;
+    padding: 3px 20px;
+    font-size: 20px;
+
+    text-align: center;
+
+}
+.common_button_room_list_db:hover {
+    background: #E3674F;
+    color: white;
+    border: 1px solid #E3674F; /* Белая рамка */
+}
+.common_button_room_list_db.show{
+    background: linear-gradient(94.63deg, #46B29D 26.59%, rgba(70, 178, 157, 0.9) 96.68%);
+    color: white;
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 3px 20px;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+.big-table {
+    overflow: auto;
+    position: relative;
+}
+.big-table table {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}

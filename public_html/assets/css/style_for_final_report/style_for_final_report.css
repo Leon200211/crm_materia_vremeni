@@ -1,0 +1,70 @@
+/*NEW*/
+
+.add_plan_main {
+    width: 300px;
+    height: 300px;
+
+    margin-top: 20px;
+
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: #a3a3a3;
+    border: 3px solid #46B29D; /* Белая рамка */
+    border-radius: 7px;
+
+    padding: 20px;
+}
+
+.plan {
+    width: 280px;
+    height: 20px;
+
+    margin-bottom: 20px;
+}
+
+.plan_data {
+    width: 290px;
+    height: 30px;
+
+    margin-bottom: 20px;
+}
+
+
+
+
+
+table {
+    border-collapse: collapse;
+    line-height: 1.1;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background:  radial-gradient(farthest-corner at 50% 50%, white, #ffffff);
+    color: #0C213B;
+}
+caption {
+    font-weight: bold;
+    font-size: 2em;
+    padding: 10px;
+    color: #000000;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+}
+
+th {
+    padding: 10px;
+    border: 1px solid #A9E2CC;
+}
+td {
+    font-size: 0.8em;
+    padding: 5px 7px;
+    border: 1px solid #A9E2CC;
+}
+.first {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+
+
+

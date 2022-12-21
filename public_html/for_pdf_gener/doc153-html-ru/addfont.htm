@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<title>AddFont</title>
+<link type="text/css" rel="stylesheet" href="fpdf.css">
+</head>
+<body>
+<h1>AddFont</h1>
+<code>AddFont(<b>string</b> family [, <b>string</b> style [, <b>string</b> file]])</code>
+<h4 class='st'>Версия</h4>
+1.5
+<h4 class='st'>Описание</h4>
+Импортирует TrueType или Type1 шрифт и делает его доступным. Сначала необходимо
+сгенерировать файл определения шрифта с помощью утилиты makefont.php.
+<BR>
+Файл определения (и сам файл шрифта во время внедрения) должен присутствовать в
+каталоге шрифтов. Если он не найден, будет выдана ошибка "Could not include font definition file".
+<h4 class='st'>Параметры</h4>
+<dl class="param">
+<dt><code>family</code></dt>
+<dd>
+Семейство шрифта. Название может быть выбрано произвольно. Если это название
+стандартного семейства шрифтов, то оно перезапишет соответствующий шрифт.
+</dd>
+<dt><code>style</code></dt>
+<dd>
+Стиль шрифта. Допустимые значения (регистронезависимы):
+<UL>
+<LI>пустая строка: обычный
+<LI><TT>B</TT>: жирный
+<LI><TT>I</TT>: курсив
+<LI><TT>BI</TT> или <TT>IB</TT>: жирный курсив
+</UL>
+По умолчанию - обычный шрифт.
+</dd>
+<dt><code>file</code></dt>
+<dd>
+Файл определения шрифта.
+<BR>
+По умолчанию название формируется из названия семейства и стиля шрифта,
+в нижнем регистре и без пробелов.
+</dd>
+</dl>
+<h4 CLASS='st'>Пример</h4>
+<div class="doc-source">
+<pre><code>$pdf-&gt;AddFont('Comic','I');</code></pre>
+</div>
+или, что то же самое:
+<div class="doc-source">
+<pre><code>$pdf-&gt;AddFont('Comic','I','comici.php');</code></pre>
+</div>
+<h4 class='st'>См. также</h4>
+<a href="setfont.htm">SetFont()</a>.
+<hr style="margin-top:1.5em">
+<div style="text-align:center"><a href="index.htm">Оглавление</a></div>
+</body>
+</html>

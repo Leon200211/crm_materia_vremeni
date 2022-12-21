@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<title>Output</title>
+<link type="text/css" rel="stylesheet" href="fpdf.css">
+</head>
+<body>
+<h1>Output</h1>
+<code><b>string</b> Output([<b>string</b> name [, <b>string</b> dest]])</code>
+<h4 class='st'>Версия</h4>
+1.0
+<h4 class='st'>Описание</h4>
+Отображает документ документ в: строку, локальный файл или в браузер. В последнем случае
+может использоваться plug-in (если есть) или может быть вызвано диалоговое окно для сохранения
+("Save as").
+<BR>
+Если нужно, то сначала будет вызван метод Close() для закрытия документа.
+<h4 class='st'>Параметры</h4>
+<dl class="param">
+<dt><code>name</code></dt>
+<dd>
+Имя файла. Если этот параметр не указан, то документ будет выведен в браузер
+(адрес <TT>I</TT>) с именем <TT>doc.pdf</TT>.
+</dd>
+<dt><code>dest</code></dt>
+<dd>
+Пункт назначения куда выводить документ. Может принимать одно из следующих значений:
+<UL>
+<LI><TT>I</TT>: вывести документ в браузер. Если возможно, используется plug-in.
+Имя заданное в <TT>name</TT> используется, если выбирается опция "Save as" на ссылке,
+генерирующей PDF.
+<LI><TT>D</TT>: отправляет в браузер и вызывает закачку файла с именем, заданным в <TT>name</TT>.
+<LI><TT>F</TT>: сохраняет в локальный файл с именем, указанным в <TT>name</TT>.
+<LI><TT>S</TT>: возвращает документ в виде строки. <TT>name</TT> игнорируется.
+</UL>
+Если параемтр не задан, а имя задано, то пункт назначения <TT>F</TT>. Если ни один параметр
+не задан, то пункт назначения  <TT>I</TT>.<BR>
+<BR>
+Замечание: для совместимости с более ранними версиями также принимается
+логическое значение (<TT>false</TT> для <TT>F</TT> и <TT>true</TT> для <TT>D</TT>).
+</dd>
+</dl>
+<h4 class='st'>См. также</h4>
+<a href="close.htm">Close()</a>.
+<hr style="margin-top:1.5em">
+<div style="text-align:center"><a href="index.htm">Оглавление</a></div>
+</body>
+</html>

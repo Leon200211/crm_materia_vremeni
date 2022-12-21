@@ -1,0 +1,1 @@
+$(function (){    $("#nav_toggle").on('click', function (event) {        event.preventDefault();        //nav_main        //nav__mas        $("#nav_toggle").toggleClass("active");        $("#nav_main").toggleClass("active");        $("#nav__mas").toggleClass("active");    });});

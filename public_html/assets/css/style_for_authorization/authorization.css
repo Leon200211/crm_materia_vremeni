@@ -1,0 +1,111 @@
+
+/*Новое*/
+
+.main{
+    width: 400px;
+    height: 400px;
+    background: #ffffff;
+
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
+    border: 3px solid #e8e8e8; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+}
+
+
+.title{
+    color: #3a3a3a;
+    font-size: 23px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.after_title{
+    width: 350px;
+    height: 1px;
+    background: #d2d2d2;
+    margin: 5px auto;
+}
+
+
+
+
+.login__ {
+    width: 250px;
+    height: 25px;
+    color: #8c8c8c;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 75px;
+    margin-left: 50px;
+}
+
+.login {
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+}
+
+.password__ {
+    width: 250px;
+    height: 25px;
+    color: #8c8c8c;
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 40px;
+    margin-left: 50px;
+
+}
+.password {
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+}
+
+
+
+.button {
+    background: linear-gradient(94.63deg, #46B29D 26.59%, rgba(70, 178, 157, 0.9) 96.68%);
+    color: white;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 60px auto;
+
+}
+
+
+/*.button {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    padding: 5px 20px;*/
+
+/*    position: absolute;*/
+/*    width: 88px;*/
+/*    height: 28px;*/
+/*    left: 916px;*/
+/*    top: 625px;*/
+
+/*    !* Grad *!*/
+
+/*    background: linear-gradient(94.63deg, #46B29D 26.59%, rgba(70, 178, 157, 0.9) 96.68%);*/
+/*    box-shadow: 0px 10px 10px rgba(70, 178, 157, 0.06);*/
+/*    border-radius: 5px;*/
+
+/*}*/
+

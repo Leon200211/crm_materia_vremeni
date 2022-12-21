@@ -1,0 +1,88 @@
+#c1 {
+    width: 1000px;
+    height: 500px;
+    border: 3px solid black;
+    margin: 40px;
+    background-color: white;
+}
+
+#c1_new {
+    width: 1000px;
+    height: 500px;
+    border: 3px solid black;
+    margin: 40px;
+    background-color: white;
+
+}
+
+.paint_title {
+    display: flex;
+
+}
+
+.lastik {
+    display: flex;
+}
+
+.switch-btn {
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 2px solid black;
+
+    display: inline-block;
+    margin-left: 10px;
+
+    background-color: white;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.switch_btn_text {
+
+    margin-left: 10px;
+
+    margin-top: 13px;
+    margin-bottom: 10px;
+}
+
+.paint_btn_clear {
+    background-color: #974b4b;
+    color: black;
+
+    width: 100px;
+    height: 30px;
+
+    font-size: 20px;
+}
+
+
+.main_summ {
+    margin-top: 20px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+
+
+@media screen and (max-width: 450px) {
+
+
+    .paint_title {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .instruments_for_paint {
+        margin-left: 30px;
+        margin-bottom: 10px;
+    }
+
+
+}

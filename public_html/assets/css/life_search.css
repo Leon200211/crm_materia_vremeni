@@ -1,0 +1,21 @@
+.test_life_1{
+    width: 400px;
+    height: 30px;
+    margin-bottom: -10px;
+    font-size: 18px;
+}
+.test_life_2{
+    width: 431px;
+
+}
+
+.bloc {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    border: solid grey 1px;
+}
+.bloc select {
+    padding: 10px;
+    margin: -5px -20px -5px -5px;
+}

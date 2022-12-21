@@ -1,0 +1,82 @@
+
+
+.product {
+    background: #fff none repeat scroll 0 0;
+    height: 200px;
+    overflow: hidden;
+    padding: 25px 15px;
+    position: relative;
+    text-align: center;
+    transition: all 0.5s ease 0s;
+
+    margin-bottom: 30px;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-top: 20px solid #46B29D; /* Параметры линии */
+    border-radius: 7px;
+
+}
+.product a{
+    display: block; /* Ссылка как блочный элемент */
+    text-align: center; /* Выравнивание по центру */
+    height: 100%; /* Высота на весь слой */
+    color: #000000; /* Цвет ссылки */
+
+    text-decoration: none;
+}
+.product:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+
+    background: #F3F3F3;
+}
+
+
+
+
+.product_notification {
+    background: #fff none repeat scroll 0 0;
+    height: 200px;
+    overflow: hidden;
+    padding: 25px 15px;
+    position: relative;
+    text-align: center;
+    transition: all 0.5s ease 0s;
+
+    margin-bottom: 30px;
+
+    border: 2px solid #E3674F; /* Белая рамка */
+    border-top: 20px solid #E3674F; /* Параметры линии */
+    border-radius: 7px;
+
+}
+.product_notification a{
+    display: block; /* Ссылка как блочный элемент */
+    text-align: center; /* Выравнивание по центру */
+    height: 100%; /* Высота на весь слой */
+    color: #000000; /* Цвет ссылки */
+
+    text-decoration: none;
+}
+.product_notification:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+
+    background: #F3F3F3;
+}
+
+
+
+
+
+
+
+
+.product_body{
+    display: flex;
+    justify-content: space-between;
+}
+.product_title{
+    margin-bottom: 100%;
+}
+.product_state{
+    margin-bottom: 150px;
+}

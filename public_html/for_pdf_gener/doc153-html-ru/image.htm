@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<title>Image</title>
+<link type="text/css" rel="stylesheet" href="fpdf.css">
+</head>
+<body>
+<h1>Image</h1>
+<code>Image(<b>string</b> file, <b>float</b> x, <b>float</b> y [, <b>float</b> w [, <b>float</b> h [, <b>string</b> type [, <b>mixed</b> link]]]])</code>
+<h4 class='st'>Версия</h4>
+1.1
+<h4 class='st'>Описание</h4>
+Выводит изображение на страницу. Должен быть задан верхний левый угол. Размеры могут
+быть заданы разными вариантами:
+<UL>
+<LI>прямое задание ширины и высоты изображения (выреженные в единицах, заданных пользователем)
+<LI>один размер задается, а другой будет вычислен автоматически с сохранением пропорций оригинала
+<LI>ни один размер не задается, в этом случае изображение будет выведено с разрешением 72 dpi.
+</UL>
+Поддерживаемые форматы: JPEG и PNG.
+<BR>
+<BR>
+Для JPEG возможны следующие параметры:
+<UL>
+<LI>gray scales
+<LI>true colors (24 bits)
+<LI>CMYK (32 bits)
+</UL>
+Для PNG возможны следующие параметры:
+<UL>
+<LI>gray scales для большинства 8 bits (256 уровней)
+<LI>indexed colors
+<LI>true colors (24 bits)
+</UL>
+но не поддерживаются:
+<UL>
+<LI>Interlacing
+<LI>Alpha channel
+</UL>
+Если задан прозрачный цвет, это будет отмечено (но будет интерпретировано только
+Acrobat версий 4 или выше).
+<BR>
+Формат может быть задан прямо или определится по расширению файла.
+<BR>
+На изображение может быть задана ссылка.
+<BR>
+<BR>
+Замечание: если изображение используется несколько раз, только одна копия будет внедрена в документ.
+<h4 class='st'>Параметры</h4>
+<dl class="param">
+<dt><code>file</code></dt>
+<dd>
+Название вставляемого изображения.
+</dd>
+<dt><code>x</code></dt>
+<dd>
+Абсцисса верхнего левого угла.
+</dd>
+<dt><code>y</code></dt>
+<dd>
+Ордината верхнего левого угла.
+</dd>
+<dt><code>w</code></dt>
+<dd>
+Ширина изображения на странице. Если это значение не задано или равно нулю, то
+оно будет вычислено автоматически.
+</dd>
+<dt><code>h</code></dt>
+<dd>
+Высота изображения на странице.
+Height of the image in the page. Если это значение не задано или равно нулю, то
+оно будет вычислено автоматически.
+</dd>
+<dt><code>type</code></dt>
+<dd>
+Формат изображения. Допустимые значения (регистронезависимы): <TT>JPG</TT>, <TT>JPEG</TT>, <TT>PNG</TT>.
+Если это значение не задано, оно будет определено по расширению файла.
+</dd>
+<dt><code>link</code></dt>
+<dd>
+URL или идентификатор, возвращаемый методом AddLink().
+</dd>
+</dl>
+<h4 class='st'>См. также</h4>
+<a href="addlink.htm">AddLink()</a>.
+<hr style="margin-top:1.5em">
+<div style="text-align:center"><a href="index.htm">Оглавление</a></div>
+</body>
+</html>

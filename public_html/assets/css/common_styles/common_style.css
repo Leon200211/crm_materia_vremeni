@@ -1,0 +1,108 @@
+
+
+/*Новое*/
+
+.common_button{
+    background: linear-gradient(94.63deg, #46B29D 26.59%, rgba(70, 178, 157, 0.9) 96.68%);
+    color: white;
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+
+    padding: 3px 20px;
+    font-size: 20px;
+}
+.common_button:hover {
+    border: 1px solid #46B29D; /* Белая рамка */
+    color: rgba(70, 178, 157, 0.9);
+    background: rgba(0,0,0,0);
+}
+
+.common_select{
+    border: 2px solid #46B29D;
+    padding: 10px;
+    border-radius: 7px;
+}
+.pdf_href{
+    color: #46B29D;
+    text-decoration: none;
+}
+.pdf_href:hover{
+    color: #46B29D;
+    text-decoration: underline;
+}
+.common_back_href {
+    text-decoration: none;
+
+    background-color: #46B29D;
+    color: white;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+
+    padding: 2px 15px 2px 15px;
+
+}
+.common_back_href:hover {
+    border: 1px solid #46B29D; /* Белая рамка */
+    color: rgba(70, 178, 157, 0.9);
+    background: rgba(0,0,0,0);
+}
+
+
+
+.common_div_body{
+    margin: 0 auto;
+    height: auto;
+    width: 90%;
+    display: block;
+
+    margin-top: 100px;
+}
+
+
+
+.input_style{
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+}
+
+
+
+
+/* Стили для переключение между комнатами */
+
+
+.room_list{
+    margin-top: 30px;
+    display: flex;
+}
+.common_button_room_list{
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: #a3a3a3;
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 3px 20px;
+    font-size: 20px;
+}
+.common_button_room_list:hover {
+    background: linear-gradient(94.63deg, #46B29D 26.59%, rgba(70, 178, 157, 0.9) 96.68%);
+    color: white;
+    border: 1px solid #46B29D; /* Белая рамка */
+}
+.common_button_room_list.show{
+    background: linear-gradient(94.63deg, #46B29D 26.59%, rgba(70, 178, 157, 0.9) 96.68%);
+    color: white;
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 3px 20px;
+    font-size: 20px;
+}
+.room_main_info{
+    display: none;
+}
+.room_main_info.show{
+    display: block;
+}
+

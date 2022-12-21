@@ -1,0 +1,23 @@
+
+/*new*/
+
+.body_result{
+    background-color: #ffffff;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+
+    margin-top: 60px;
+    margin-left: 150px;
+    width: 30%;
+
+    padding-left: 50px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.body_result_title{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 25px;
+}

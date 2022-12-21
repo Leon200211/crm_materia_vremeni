@@ -1,0 +1,73 @@
+/* картинка на странице */
+.minimized {
+
+    width: 800px;
+    height: 1000px;
+    cursor: pointer;
+    border: 1px solid #FFF;
+}
+
+.minimized:hover {
+    border: 1px solid yellow;
+}
+
+/* увеличенная картинка */
+#magnify {
+    margin-top: 800px;
+    display: none;
+
+    /* position: absolute; upd: 24.10.2016 */
+    position: absolute;
+    max-width: 80%;
+    height: auto;
+    z-index: 9999;
+}
+
+#magnify img {
+    width: 100%;
+}
+
+/* затемняющий фон */
+#overlay {
+    display: none;
+
+    background: #000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    z-index: 9990;
+}
+
+/* кнопка закрытия */
+#close-popup {
+    width: 100%;
+    height: 100%;
+
+    background: #FFFFFF;
+    border: 1px solid #AFAFAF;
+    border-radius: 15px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    opacity: 0;
+}
+
+#close-popup i {
+    width: 30px;
+    height: 30px;
+    background: url(https://codernote.ru/files/cross.png) no-repeat center center;
+    background-size: 16px 16px;
+    display: block;
+}
+
+
+
+#close-popup:hover {
+    animation: rota 4s infinite normal;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}

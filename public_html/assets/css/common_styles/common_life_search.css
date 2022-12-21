@@ -1,0 +1,24 @@
+.test_life_1_common{
+    width: 400px;
+    height: 30px;
+    margin-bottom: -10px;
+    font-size: 18px;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+}
+.test_life_2_common{
+    width: 429px;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+}
+
+.bloc {
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    border: 1px solid #46B29D; /* Белая рамка */
+}
+.bloc select {
+    padding: 10px;
+    margin: -5px -20px -5px -5px;
+}

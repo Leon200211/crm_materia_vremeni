@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<title>SetFont</title>
+<link type="text/css" rel="stylesheet" href="fpdf.css">
+</head>
+<body>
+<h1>SetFont</h1>
+<code>SetFont(<b>string</b> family [, <b>string</b> style [, <b>float</b> size]])</code>
+<h4 class='st'>Версия</h4>
+1.0
+<h4 class='st'>Описание</h4>
+Задает шрифт используемый для печати символов строк. Этот метод должен быть
+обязательно вызван хотя бы один раз до того, как будет выводиться текст, иначе документ
+будет неправильным.
+<BR>
+Шрифт может быть одним из стандартных или же добавленным с помощью метода AddFont().
+Стандартные шрифты используют кодировку cp1251.
+<BR>
+Этот метод может быть вызван до создания первой страницы и заданный шрифт будет сохраняться
+от страницы к странице.
+<BR>
+Если нужно изменить только размер шрифта, проще будет вызвать метод SetFontSize().
+<BR>
+<BR>
+<B>Замечание:</B> файлы метрики шрифта должны быть доступны. Они последовательно ищутся
+в по таким путям:
+<UL>
+<LI>Директория, определенная в константе <TT>FPDF_FONTPATH</TT> (если эта константа определена)
+<LI>Директория <TT>font</TT> размещенная в директории, содержащей <TT>fpdf.php</TT> (если такая существует)
+<LI>Директории, доступные через <TT>include()</TT>
+</UL>
+Пример определения <TT>FPDF_FONTPATH</TT> (обратите внимание на замыкающий слеш):
+<div class="doc-source">
+<pre><code>define('FPDF_FONTPATH','/home/www/font/');
+require('fpdf.php');</code></pre>
+</div>
+Если файл, соответствующий запрашиваемому шрифту не найден, то будет выдана ошибка
+"Could not include font metric file".
+<h4 class='st'>Параметры</h4>
+<dl class="param">
+<dt><code>family</code></dt>
+<dd>
+Семейство шрифта. Это может быть или имя, определенное в AddFont(), или одно из стандартных
+семейств (регистронезависимо):
+<UL>
+<LI><TT>Courier</TT> (fixed-width)
+<LI><TT>Helvetica</TT> or <TT>Arial</TT> (synonymous; sans serif)
+<LI><TT>Times</TT> (serif)
+<LI><TT>Symbol</TT> (symbolic)
+<LI><TT>ZapfDingbats</TT> (symbolic)
+</UL>
+Также может быть задано пустой строкой. В этом случае будет сохранено текущее семейство шрифтов.
+</dd>
+<dt><code>style</code></dt>
+<dd>
+Стиль шрифта. Допустимые значения (регистронезависимы):
+<UL>
+<LI>пустая строка: обычный шрифт
+<LI><TT>B</TT>: жирный
+<LI><TT>I</TT>: курсив
+<LI><TT>U</TT>: подчеркнутый
+</UL>
+или любые комбинации. По умолчанию: обычный шрифт.
+Жирный и курсив неприменимы к шрифтам <TT>Symbol</TT> и <TT>ZapfDingbats</TT>.
+</dd>
+<dt><code>size</code></dt>
+<dd>
+Размер шрифта в точках.
+<BR>
+По умолчанию - текущий размер шрифта. Если никакой размер не был задан с самого
+начала документа, то значение будет равно 12.
+</dd>
+</dl>
+<h4 CLASS='st'>Пример</h4>
+<div class="doc-source">
+<pre><code>//Times обычный 12
+$pdf-&gt;SetFont('Times');
+//Arial жирный 14
+$pdf-&gt;SetFont('Arial','B',14);
+//Удаляем жирный
+$pdf-&gt;SetFont('');
+//Times жирный, курсив и подчеркнутый 14
+$pdf-&gt;SetFont('Times','BIU');</code></pre>
+</div>
+<h4 class='st'>См. также</h4>
+<a href="addfont.htm">AddFont()</a>,
+<a href="setfontsize.htm">SetFontSize()</a>,
+<a href="cell.htm">Cell()</a>,
+<a href="multicell.htm">MultiCell()</a>,
+<a href="write.htm">Write()</a>.
+<hr style="margin-top:1.5em">
+<div style="text-align:center"><a href="index.htm">Оглавление</a></div>
+</body>
+</html>

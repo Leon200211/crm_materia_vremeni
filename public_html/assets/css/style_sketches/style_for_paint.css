@@ -1,0 +1,63 @@
+/*NEW*/
+
+.image_for_designer_old{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 500px;
+    height: 300px;
+    padding: 20px;
+    background-color: white;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+}
+.old_sketch{
+    width: 500px;
+    height: 300px;
+}
+
+.paint_line{
+    background-color: #46B29D;
+    height: 2px;
+    width: 70%;
+
+    margin-bottom: 20px;
+}
+
+
+
+
+.instruments_for_paint{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 50%;
+
+}
+
+.main_btn_paint{
+    margin-right: 10px;
+}
+.main_color_choice{
+    margin-right: 10px;
+}
+.switch-btn {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: inline-block;
+    background-color: white;
+
+    margin-top: -7px;
+}
+.choice_bold{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+
+

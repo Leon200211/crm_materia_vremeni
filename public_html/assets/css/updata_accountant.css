@@ -1,0 +1,40 @@
+.title_for_update {
+    color: black;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+
+.update_title {
+    margin-left: 20px;
+}
+
+
+.place_find {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.update_product_all {
+    margin-left: 20px;
+}
+
+.btn_for_update {
+    background-color: #974b4b;
+    color: black;
+
+    width: 150px;
+    height: 30px;
+
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.text_for_update {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+

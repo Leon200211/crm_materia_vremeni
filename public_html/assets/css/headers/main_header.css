@@ -1,0 +1,259 @@
+
+/*Новое*/
+
+.container_my{
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: #46B29D;
+    position: fixed;
+    transform: translate3d(0, 0, 0);
+}
+
+
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+/*Nav*/
+.nav_main {
+    margin: 15px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.title_nav{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 15px 10px;
+    font-size: 17px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white
+}
+
+.nav__link{
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+    position: relative;
+
+    text-decoration: none;
+    color: white;
+
+    transition: color .2s linear;
+}
+
+.nav__link:after {
+    display: block; /*превращаем его в блочный элемент*/
+    content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
+    height: 3px; /*задаём высоту линии*/
+    width: 0%; /*задаём начальную ширину элемента (линии)*/
+    background-color: #fce38a; /*цвет фона элемента*/
+    transition: width 0.4s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/
+}
+.nav__link:hover:after,
+.nav__link:focus:after {
+    width: 100%;
+}
+.nav__link:hover{
+    color:#fce38a;
+}
+
+.nav__link__mas{
+    display: inline-block;
+    vertical-align: top;
+    margin: 12px 10px;
+    text-decoration: none;
+    color: white;
+    transition: color .2s linear;
+}
+
+.nav__link__mas:hover{
+    color: #fce38a;
+}
+
+
+
+
+
+
+
+
+/*nav-toggle
+Для изменения навигации в телефоне*/
+.nav-toggle{
+    display: none;
+    width: 30px;
+    margin-top: 5px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    z-index: 1;
+}
+.nav-toggle__item {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.nav-toggle.active .nav-toggle__item{
+    background: none;
+}
+.nav-toggle.active .nav-toggle__item:before {
+    transform-origin: left top;
+    transform: rotate(45deg)
+    translate3d(0px, -2px, 0);
+}
+.nav-toggle.active .nav-toggle__item:after {
+    transform-origin: left bottom;
+    transform: rotate(-45deg)
+    translate3d(0px, 3px, 0);
+}
+.nav-toggle__item:before,
+.nav-toggle__item:after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    transition: transform .2s linear;
+}
+.nav-toggle__item:before{
+    top: -8px;
+}
+.nav-toggle__item:after {
+    bottom: -8px;
+}
+
+
+
+
+
+
+
+
+
+.nav_for_order {
+    margin: 15px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.nav_for_bd {
+    margin: 15px 0;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.logo_title {
+    display: none;
+}
+.nav_main_phone {
+    display: none;
+}
+
+
+
+@media screen and (max-width: 450px) {
+
+    .container{
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        position: fixed;
+        transform: translate3d(0, 0, 0);
+        padding-bottom: 30px;
+        background-color: #46B29D;
+    }
+
+    .header__inner{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding-bottom: 10px;
+
+    }
+
+    .nav_main {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        display: none;
+    }
+
+    .title_nav{
+        display: none;
+    }
+
+    .nav__link {
+        margin-top: 10px;
+    }
+
+    .nav__mas{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        display: none;
+    }
+
+    .nav_for_order {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .nav__link__accountant {
+        margin-bottom: 20px;
+    }
+
+    .nav_for_bd {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .nav-toggle {
+        top: 10px;
+        display: flex;
+    }
+
+    .nav-toggle.active {
+        display: block;
+    }
+
+    .nav_main.active {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+
+    .nav__mas.active{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+}

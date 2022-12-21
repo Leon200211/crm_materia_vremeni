@@ -1,0 +1,334 @@
+
+.back_title{
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+.executor_page_line_one{
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+
+
+.executor_page_line_one_block_one{
+
+    width: 70%;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+    background: white;
+
+
+    padding: 30px;
+
+    margin-right: 50px;
+}
+.executor_page_line_one_block_one_line{
+    width: 100%;
+    height: 3px;
+    background: #46B29D;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.executor_page_line_one_block_one_title_line{
+    display: flex;
+}
+.executor_page_line_one_block_one_title_line_text{
+    font-size: 30px;
+    font-weight: bold;
+
+    margin-right: 40px;
+}
+.executor_page_line_one_block_one_title_line_href{
+    margin-top: 15px;
+    margin-right: 20px;
+}
+
+
+
+.search_info_state_change_title{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.state_change{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+}
+
+.form_radio_btn {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.form_radio_btn input[type=radio] {
+    display: none;
+}
+.form_radio_btn label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0px 15px;
+    line-height: 34px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    user-select: none;
+}
+
+/* Checked */
+.form_radio_btn input[type=radio]:checked + label {
+    background: #E3674F;
+    color: white;
+}
+
+/* Hover */
+.form_radio_btn label:hover {
+    color: #666;
+}
+
+/* Disabled */
+.form_radio_btn input[type=radio]:disabled + label {
+    background: #efefef;
+    color: #666;
+}
+
+.state_change_button {
+    text-decoration: none;
+
+    background-color: #46B29D;
+    color: white;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+
+    padding: 2px 15px 2px 15px;
+
+    margin-top: 10px;
+    margin-left: 20px;
+}
+.state_change_button:hover {
+    border: 1px solid #46B29D; /* Белая рамка */
+    color: rgba(70, 178, 157, 0.9);
+    background: rgba(0,0,0,0);
+}
+
+
+
+
+
+.executor_page_line_one_block_one_title_footer{
+    display: flex;
+}
+
+
+
+
+.executor_page_line_one_block_two{
+
+    width: 30%;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+    background: white;
+
+    padding: 30px;
+
+
+}
+.search_info_date{
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+.executor_page_line_two{
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 50px;
+}
+
+.executor_page_line_two_note{
+    width: 70%;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+    background: white;
+
+
+    padding: 30px;
+
+    margin-right: 50px;
+
+}
+.executor_page_line_two_note_title{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+.executor_page_line_two_note_edit{
+    display: flex;
+    margin-top: 20px;
+}
+.executor_page_line_two_note_edit_item{
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+.executor_page_line_two_complaint{
+    width: 30%;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+    background: white;
+
+    padding: 30px;
+}
+.executor_page_line_two_complaint_line{
+    width: 100%;
+    height: 3px;
+    background: #46B29D;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+.important_indicator{
+    height: 70px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.important_indicator::-webkit-scrollbar {
+    width: 8px;               /* ширина scrollbar */
+}
+.important_indicator::-webkit-scrollbar-thumb {
+    background-color: #46B29D;    /* цвет плашки */
+    border-radius: 15px;       /* закругления плашки */
+}
+.important_indicator_href{
+    text-decoration: none;
+    color: #46B29D;
+}
+
+
+
+
+
+
+
+
+.executor_page_sketches{
+    width: 100%;
+
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+    background: white;
+
+}
+.main_field_div_for_room{
+    background-color: #ffffff;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+
+
+    margin-right: 50px;
+
+    padding-left: 50px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+}
+
+
+
+.executor_page_sketches_body{
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+
+
+
+.executor_page_sketches_main{
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 50px;
+}
+
+
+.executor_page_sketches_main_spec{
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.executor_page_sketches_main_note{
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 50%;
+}
+
+.executor_page_sketches_main_note_title{
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+.image_for_designer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    background-color: white;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+}
+
+
+.executor_page_sketches_main_line{
+    width: 97%;
+    height: 3px;
+    background: #46B29D;
+    margin-bottom: 20px;
+}
+
+

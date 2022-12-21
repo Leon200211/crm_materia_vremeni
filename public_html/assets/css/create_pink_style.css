@@ -1,0 +1,40 @@
+.input_pink {
+    width: 150px;
+    height: 30px;
+
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.order_btn_create{
+    background-color: #974b4b;
+    color: black;
+
+    width: 160px;
+    height: 30px;
+
+    font-size: 20px;
+
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+.products_info_pink {
+    width: 143px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.products_btn_pink {
+
+    background-color: #974b4b;
+    color: black;
+
+    width: 150px;
+    height: 30px;
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}

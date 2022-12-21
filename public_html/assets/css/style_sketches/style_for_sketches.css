@@ -1,0 +1,104 @@
+/*NEW*/
+
+
+.back_title{
+    margin-bottom: 15px;
+}
+
+.main_field_div_sketches{
+    background-color: #ffffff;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+
+    margin-top: 30px;
+
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+}
+
+
+.function_for_pdf{
+    display: flex;
+    justify-content: left;
+
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.function_for_pdf_elem{
+    margin-right: 20px;
+}
+.function_for_pdf_elem_dow{
+    margin-top: -5px;
+}
+
+
+.add_product{
+    margin-top: 40px;
+}
+
+
+
+.live_search_all{
+    display: flex;
+    justify-content: left;
+
+    margin-top: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.live_search_new{
+    margin-right: 20px;
+}
+
+
+.big-table {
+    overflow: auto;
+    position: relative;
+}
+.big-table table {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+.under_table{
+    margin-top: 150px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.note_sketches{
+    margin-bottom: 20px;
+}
+
+
+
+
+
+.image_for_designer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    background-color: white;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+}
+.edit_sketches_btn{
+    display: flex;
+    justify-content: left;
+
+    margin-top: 250px;
+    margin-left: 100px;
+}

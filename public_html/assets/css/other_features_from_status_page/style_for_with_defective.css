@@ -1,0 +1,77 @@
+/*Новое*/
+
+
+.main_field_div{
+    background-color: #ffffff;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+
+    margin-top: 30px;
+
+    padding-left: 50px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+
+.main_field_div_for_room{
+    background-color: #ffffff;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+
+
+    margin-right: 50px;
+
+    padding-left: 50px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+}
+
+.main_title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+.table_room_name{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+
+    font-size: 20px;
+}
+.table_room_name.title{
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+
+
+
+.table_title_info {
+    margin-top: 20px;
+}
+.th_title_info {
+    padding: 10px;
+
+    background: linear-gradient(to left, #46B29D, #46B29D 100%);
+    background-position: 0 100%;
+    background-size: 100% 2px;
+    background-repeat: repeat-x;
+}
+.tb_title_info {
+    padding: 10px;
+
+}
+
+
+tr:nth-child(even) {
+    background-color: #F1F1F1;
+}
+
+

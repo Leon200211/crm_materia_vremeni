@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<title>Footer</title>
+<link type="text/css" rel="stylesheet" href="fpdf.css">
+</head>
+<body>
+<h1>Footer</h1>
+<code>Footer()</code>
+<h4 class='st'>Версия</h4>
+1.0
+<h4 class='st'>Описание</h4>
+Этот метод используется для визуализации нижнего колонтитула страницы. Он автоматически
+вызывается методом AddPage() и Close() и его не обязательно вызывать непосредственно
+из приложения. Реализация этого метода в FPDF не определена, так что требуется специальная
+обработка, то нужно создать подкласс и переписать данный метод.
+<h4 CLASS='st'>Пример</h4>
+<div class="doc-source">
+<pre><code>class PDF extends FPDF
+{
+function Footer()
+{
+    //Отступаем снизу 1.5 см
+    $this-&gt;SetY(-15);
+    //Выбираем шрифр Arial курсив разером 8
+    $this-&gt;SetFont('Arial','I',8);
+    //Выводим номер страницы по центру
+    $this-&gt;Cell(0,10,'Page '.$this-&gt;PageNo(),0,0,'C');
+}
+}</code></pre>
+</div>
+<h4 class='st'>См. также</h4>
+<a href="header.htm">Header()</a>.
+<hr style="margin-top:1.5em">
+<div style="text-align:center"><a href="index.htm">Оглавление</a></div>
+</body>
+</html>

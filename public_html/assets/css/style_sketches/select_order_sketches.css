@@ -1,0 +1,13 @@
+/*NEW*/
+
+.block_select_order{
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: black;
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px;
+
+    padding: 30px;
+    width: 100%;
+}
+
+

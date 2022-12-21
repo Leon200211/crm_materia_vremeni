@@ -1,0 +1,171 @@
+
+/*NEW*/
+
+.back_title{
+    margin-bottom: 10px;
+    font-size: 18px;
+
+    color: #4F4F4F;
+}
+
+
+.pink_page_line_one{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 50px;
+}
+
+.pink_page_line_one_col_one{
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: #a3a3a3;
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px;
+
+    width: 67%;
+}
+.pink_page_line_one_col_two{
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: #a3a3a3;
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px;
+
+    width: 30%;
+
+
+}
+
+
+.pink_page_line_one_col_one_line_one{
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.pink_page_line_one_col_one_line_one_left{
+    display: flex;
+    justify-content: left;
+}
+.pink_page_line_one_col_one_title{
+    color: black;
+    font-weight: bold;
+    font-size: 30px;
+
+    padding-left: 20px;
+}
+.pink_page_line_one_col_one_state{
+    color: black;
+    font-size: 20px;
+
+    padding-left: 40px;
+
+    margin-top: 10px;
+}
+.pink_page_line_one_col_one_line_one_right{
+    margin-right: 40px;
+    margin-top: 10px;
+}
+
+
+.function_for_pdf{
+    display: flex;
+    justify-content: left;
+
+    margin-top: 40px;
+    margin-left: 20px;
+}
+.function_for_pdf_elem{
+    margin-right: 20px;
+}
+.function_for_pdf_elem_dow{
+    margin-top: -5px;
+}
+
+
+
+
+
+
+.pink_page_line_one_col_two_blog{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.pink_page_line_one_col_two_blog_line{
+    display: flex;
+    justify-content: left;
+}
+.hr-line{
+    position: absolute;
+    margin-left: 30px;
+    border-bottom: solid 2px #452446;
+    width: 300px;
+}
+.pink_page_line_one_col_two_blog_title{
+    color: black;
+}
+.pink_page_line_one_col_two_blog_sum{
+    color: black;
+
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+
+
+.img_btn {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    /* отображаем курсор в виде руки при наведении; некоторые
+    считают, что необходимо оставлять стрелочный вид для кнопок */
+    cursor: pointer;
+
+    margin-left: 70px;
+    margin-top: 10px;
+}
+
+
+.pre_edit{
+    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+
+
+
+
+
+.add_room{
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: #a3a3a3;
+    border: 1px solid #46B29D; /* Белая рамка */
+
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 3px 20px;
+    font-size: 20px;
+}
+
+
+
+
+.add_product{
+    margin-top: 30px;
+}
+
+
+
+.pink_room_title_blog{
+    display: flex;
+    justify-content: space-between;
+}
+
+.pink_room_delete{
+    margin-right: 30px;
+}
+
+

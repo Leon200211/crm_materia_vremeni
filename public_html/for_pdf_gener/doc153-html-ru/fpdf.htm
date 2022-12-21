@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<title>FPDF</title>
+<link type="text/css" rel="stylesheet" href="fpdf.css">
+</head>
+<body>
+<h1>FPDF</h1>
+<code>FPDF([<b>string</b> orientation [, <b>string</b> unit [, <b>mixed</b> format]]])</code>
+<h4 class='st'>Версия</h4>
+1.0
+<h4 class='st'>Описание</h4>
+Конструктор класса. Позволяет установить формат страницы, ее ориентация и
+единицу измерения, используемую во всех методах (кроме размера шрифта).
+<h4 class='st'>Параметры</h4>
+<dl class="param">
+<dt><code>orientation</code></dt>
+<dd>
+Ориентация страницы по умолчанию. Допустимые значения (регистронезависимы):
+<UL>
+<LI><TT>P</TT> или <TT>Книжная</TT>
+<LI><TT>L</TT> или <TT>Альбомная</TT>
+</UL>
+Значение по умолчанию: <TT>P</TT>.
+</dd>
+<dt><code>unit</code></dt>
+<dd>
+Единица измерения. Допустимые значения:
+<UL>
+<LI><TT>pt</TT>: точка
+<LI><TT>mm</TT>: милиметр
+<LI><TT>cm</TT>: снатиметр
+<LI><TT>in</TT>: дюйм
+</UL>
+Точка соответствует 1/72 дюйма, это примерно 0.35 мм (один дюйм - 2.54 мм).
+Это очень распространенная единица измерения в типографии; размеры шрифтов
+выражаются в этих единицах.
+<BR>
+<BR>
+Значение по умолчанию: <TT>mm</TT>.
+</dd>
+<dt><code>format</code></dt>
+<dd>
+Формат страниц. Это может быть любое из следующих значений (регистронезависимы):
+<UL>
+<LI><TT>A3</TT>
+<LI><TT>A4</TT>
+<LI><TT>A5</TT>
+<LI><TT>Letter</TT>
+<LI><TT>Legal</TT>
+</UL>
+или специальный формат, выраженный в виде массива из двух элементов: ширина и высота
+(выраженных в единицах, заданных в <TT>unit</TT>).
+</dd>
+</dl>
+<hr style="margin-top:1.5em">
+<div style="text-align:center"><a href="index.htm">Оглавление</a></div>
+</body>
+</html>

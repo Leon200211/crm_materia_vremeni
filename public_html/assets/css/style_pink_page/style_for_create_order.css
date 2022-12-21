@@ -1,0 +1,60 @@
+
+
+/*Новый*/
+
+
+.room_list{
+    margin-top: 30px;
+    display: flex;
+}
+.common_button_room_list{
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: #a3a3a3;
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 3px 20px;
+    font-size: 20px;
+}
+.common_button_room_list:hover {
+    background: linear-gradient(94.63deg, #46B29D 26.59%, rgba(70, 178, 157, 0.9) 96.68%);
+    color: white;
+    border: 1px solid #46B29D; /* Белая рамка */
+}
+.common_button_room_list.show{
+    background: linear-gradient(94.63deg, #46B29D 26.59%, rgba(70, 178, 157, 0.9) 96.68%);
+    color: white;
+    border: 1px solid #46B29D; /* Белая рамка */
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 3px 20px;
+    font-size: 20px;
+}
+
+
+
+
+.block_create_order{
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: black;
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+
+
+    width: 100%;
+}
+
+.container_create_order{
+    padding: 30px;
+}
+
+
+.container_create_order_line_one{
+    padding-top: 15px;
+}
+.container_create_order_line_two{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}

@@ -1,0 +1,1 @@
+<?php    # Соединение с БД    #$connect = mysqli_connect(hostname:'localhost', username:'a0558948_crud', password:'2u27Ub9h', database:'a0558948_crud');    $connect = mysqli_connect(hostname:'127.0.0.1:3307', username:'root', password:'root', database:'crm_materia_vremeni');

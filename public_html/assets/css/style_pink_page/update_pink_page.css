@@ -1,0 +1,40 @@
+/*NEW*/
+
+
+.main_field_div{
+    background-color: #ffffff;
+
+    border: 2px solid #46B29D; /* Белая рамка */
+    border-radius: 7px; /* Радиус скругления */
+
+    margin-top: 30px;
+
+    padding-left: 50px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+
+
+
+.product_buttons {
+    display: block;
+    width: 250px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+
+    background: linear-gradient(94.63deg, #ffffff 26.59%, rgba(255, 255, 255, 0.9) 96.68%);
+    color: #4F4F4F;
+    border: 1px solid #E3674F; /* Белая рамка */
+    border-radius: 7px;
+    padding: 3px 20px;
+    font-size: 20px;
+
+    text-align: center;
+
+}
+.product_buttons:hover {
+    background: #E3674F;
+    color: white;
+    border: 1px solid #E3674F; /* Белая рамка */
+}

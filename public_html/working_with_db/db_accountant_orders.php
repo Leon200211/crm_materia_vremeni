@@ -25,6 +25,9 @@ if ($_SESSION['state'] == 'admin'){
     $mas_1 = ['№', 'Имя<br>заказчика', 'Телефон<br>заказчика', 'Почта<br>заказчика', 'Адрес<br>заказчика', 'Дизайнер', 'Салон', 'Розовая<br>страница', 'Статус'];
     $mas_2 = ['id_pink_order', 'customer_name', 'customer_phone', 'email', 'address_additional', 'executor_id', 'salon'];
 }
+
+require_once "../global_functions.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -137,9 +140,15 @@ if ($_SESSION['state'] == 'admin'){
                             <tr>
                                 <?php
                                 foreach ($mas_2 as $value) {
-                                    ?>
-                                    <td class="tb_title_info"><?= $select_while[$value] ?></td>
-                                    <?php
+                                    if($value == 'executor_id'){
+                                        ?>
+                                        <td class="tb_title_info"><?= get_designer_name($connect, $select_while[$value]) ?></td>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <td class="tb_title_info"><?= $select_while[$value] ?></td>
+                                        <?php
+                                    }
                                 }
                                 ?>
                                 <td class="tb_title_info"><a class="pdf_href" href="<?="../assets/pdf_file/"  . $select_while['pink_image']?>?buster=<?= time() ?>"  target='_blank' > <?= $select_while['pink_image'] ?> </a></td>

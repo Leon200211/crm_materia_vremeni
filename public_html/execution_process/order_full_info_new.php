@@ -298,8 +298,8 @@ if(!empty($select_test['id'])){
                                         <label for="radio-1">Доставка клиенту</label>
                                     </div>
                                     <div class="form_radio_btn">
-                                        <input name="state_order" id="radio-1" type="radio" value="Завершен">
-                                        <label for="radio-1">Завершен</label>
+                                        <input name="state_order" id="radio-2" type="radio" value="Завершен">
+                                        <label for="radio-2">Завершен</label>
                                     </div>
 
                                     <div>
@@ -805,7 +805,7 @@ if(!empty($select_test['id'])){
                 {
                     ?>
                     <div>
-                        <a href="complaint/create_complaint.php?id_order=<?=$id?>" class="common_button">Рекламация на пошив</a>
+                        <a href="complaint/create_complaint.php?id_order=<?=$id?>" class="common_button">Рекламация о браке</a>
                     </div>
                     <div class="executor_page_line_two_complaint_line"></div>
                     <?php
@@ -819,7 +819,7 @@ if(!empty($select_test['id'])){
                 while($complaint_while = mysqli_fetch_assoc($complaint)){
                     ?>
                     <div>
-                        <a href="<?="../assets/complaint/pdf/" . $complaint_while['file']?>?buster=<?= time() ?>"  target='_blank' class="important_indicator_href">Рекламация о браке</a>
+                        <a href="<?="../assets/complaint/pdf/" . $complaint_while['file']?>?buster=<?= time() ?>"  target='_blank' class="important_indicator_href">Рекламация о браке | <?=$complaint_while['name']?> | <?=$complaint_while['date_create']?></a>
                     </div>
                     <?php
                 }
@@ -1003,11 +1003,7 @@ if(!empty($select_test['id'])){
                 // добавляем уведомление
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `state` = 'workshop' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             } else if($state_order == "Создание эскизов"){
                 // добавляем уведомление
@@ -1016,11 +1012,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
 
 
@@ -1037,11 +1029,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             } else if($state_order == "Выдан закройщик"){
                 // добавляем уведомление
@@ -1050,11 +1038,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin' OR `state` = 'workshop'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
 
                 // дата выдачи закройщику
@@ -1069,11 +1053,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin' OR `state` = 'workshop'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
 
                 // дата начала работы
@@ -1089,11 +1069,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin' OR `state` = 'workshop'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             } else if($state_order == "Доставка в салон"){
 
@@ -1103,11 +1079,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             } else if($state_order == "Поступил в салон"){
                 // добавляем уведомление
@@ -1116,11 +1088,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             } else if($state_order == "Доставка клиенту"){
                 // добавляем уведомление
@@ -1129,11 +1097,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             }
             // Возврат дизайнеру
@@ -1144,11 +1108,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             }
             // Брак ткани
@@ -1159,11 +1119,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             }
             //Перевыбор ткани в салоне
@@ -1174,11 +1130,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             }
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1191,11 +1143,7 @@ if(!empty($select_test['id'])){
                 $executor_id = $executor_id['executor_id'];
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
             }
 
@@ -1203,11 +1151,7 @@ if(!empty($select_test['id'])){
             else if($state_order == "Завершен"){
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
-                    $id_user = $select_while['id'];
-                    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$id_user' and `id_order` = '$search_get'");
-                    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
-                        mysqli_query($connect, "INSERT INTO `notice` (`id`, `id_user`, `id_order`) VALUES (NULL, '$id_user', '$search_get')");
-                    }
+                    set_notice($connect, $select_while['id'], $search_get);
                 }
                 $today = date("d.m.Y");
                 mysqli_query($connect, "UPDATE `orders_date` SET `data_final_end` = '$today' WHERE `id_order` = '$search_get'");

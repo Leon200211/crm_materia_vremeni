@@ -45,6 +45,10 @@ if ($_SESSION['state'] == 'admin'){
         'date_start_work', 'note', 'date_note', 'date_end',
         'departure_date', 'courier'];
 }
+
+$path = $_SERVER['DOCUMENT_ROOT'];
+require_once $path . '/global_functions.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -225,20 +229,14 @@ if ($_SESSION['state'] == 'admin'){
                                     <td class="tb_title_info"><?= $res_pro ?>%</td>
                                     <?php
                                 }else if($value == 'performer'){
-                                    $sql_performer = "SELECT `name` FROM `performers` WHERE `id` = '{$select_while['performer']}'";
-                                    $select_performer = mysqli_query($connect, $sql_performer);
-                                    $select_performer = mysqli_fetch_assoc($select_performer);
                                     ?>
-                                    <td class="tb_title_info"><?= $select_performer['name'] ?></td>
+                                    <td class="tb_title_info"><?= get_performer_name($connect, $select_while['performer']) ?></td>
                                     <?php
                                 }else if($value == 'total_cost'){
-                                    $path = $_SERVER['DOCUMENT_ROOT'];
-                                    require_once $path . '/global_functions.php';
                                     ?>
                                     <td class="tb_title_info"><?= calculate_the_cost_of_sewing($connect, $select_while['id_pink_order']) ?></td>
                                         <?php
-                                }
-                                else {
+                                }else {
                                 ?>
                                 <td class="tb_title_info"><?= $select_while[$value] ?></td>
                                 <?php

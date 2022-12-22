@@ -21,12 +21,11 @@ function send_request_to_supplier_3($connect, $arg_1)
     $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$arg_1' AND `additional_info` = 'Заменено' AND `category` != 'sewing' AND `category` != 'modification'";
     $select = mysqli_query($connect, $sql);
     while ($select_while = mysqli_fetch_assoc($select)) {
-        foreach ($select as $value) {
-            if (!(in_array($value['provider'], $array_2)) and $value['provider'] != '') {
-                array_push($array_2, $value['provider']);
-            }
+        if (!(in_array($select_while['provider'], $array_2)) and $select_while['provider'] != '') {
+            array_push($array_2, $select_while['provider']);
         }
     }
+
     // создаем шаблон массива ключ => значение
     for ($i = 0; $i<count($array_2); $i++) {
         $array[$array_2[$i]] = [];
@@ -36,10 +35,8 @@ function send_request_to_supplier_3($connect, $arg_1)
     $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$arg_1' AND `additional_info` = 'Заменено' AND `category` != 'sewing' AND `category` != 'modification'";
     $select = mysqli_query($connect, $sql);
     while ($select_while = mysqli_fetch_assoc($select)) {
-        foreach ($select as $value) {
-            if($value['provider'] != '') {
-                array_push($array[$value['provider']], $value['description'] . "|???|" . $value['quantity']. "|???|" . $value['size']);
-            }
+        if($select_while['provider'] != '') {
+            array_push($array[$select_while['provider']], $select_while['description'] . "|???|" . $select_while['quantity']. "|???|" . $select_while['size']);
         }
     }
 
@@ -51,11 +48,8 @@ function send_request_to_supplier_3($connect, $arg_1)
     $errors = array();
 
     // в этом цикле мы будем отправлять письмо
-    foreach ($array as $value) {
+    foreach ($array as $key => $value) {
         $messeg = "";
-
-        // получение ключа
-        $to_1 = key($array);
 
         if (count($value) > 1) {
             foreach ($value as $v) {
@@ -63,6 +57,10 @@ function send_request_to_supplier_3($connect, $arg_1)
                 $mas_1 = explode("|???|", $v);  // разбиваем на название и количество
                 $messeg = $messeg . "Продукт " . $mas_1[0] . " цвет: " . $mas_1[2] . " необходим в количестве: " . $mas_1[1] . "\n";
             }
+
+            $messeg .= "Кому: $key";
+
+
             // отправка письма
             $to = "leon20022018@yandex.ru";
             $headers = "From: materiyavremeni@myb-workflow.ru";
@@ -75,17 +73,23 @@ function send_request_to_supplier_3($connect, $arg_1)
                 require_once('working_with_db/work_with_mail/writing_to_database.php');
                 write_message_in_db($connect, $arg_1, $to, "Запрос поставки измененных товаров", $messeg, '-');
 
-                if (!mail('leon200207@yandex.ru', $subject, $messeg, $headers)) {
-                    array_push($errors, $to_1);
+                $messege_to_admin = $messeg . "\nЗаказ № $arg_1";
+
+                if (!mail('leon200207@yandex.ru', $subject, $messeg, $headers) AND
+                    !mail('leon200207@yandex.ru', $subject, $messege_to_admin, $headers)) {
+                    array_push($errors, $key);
                 }
             } else {
-                array_push($errors, $to_1);
+                array_push($errors, $key);
             }
         } else {
             // генерируем текст письма
             $mas_1 = explode("|???|", $value[0]);  // разбиваем на название и количество
             $messeg = $messeg . "Продукт " . $mas_1[0] . " цвет: " . $mas_1[2] . " необходим в количестве: " . $mas_1[1] . "\n";
 
+            $messeg .= "Кому: $key";
+
+
             // отправка письма
             $to = "leon20022018@yandex.ru";
             $headers = "From: materiyavremeni@myb-workflow.ru";
@@ -98,16 +102,18 @@ function send_request_to_supplier_3($connect, $arg_1)
                 require_once('working_with_db/work_with_mail/writing_to_database.php');
                 write_message_in_db($connect, $arg_1, $to, "Запрос поставки измененных товаров", $messeg, '-');
 
-                if (!mail('leon200207@yandex.ru', $subject, $messeg, $headers)) {
-                    array_push($errors, $to_1);
+                $messege_to_admin = $messeg . "\nЗаказ № $arg_1";
+
+                if (!mail('leon200207@yandex.ru', $subject, $messeg, $headers) AND
+                    !mail('leon200207@yandex.ru', $subject, $messege_to_admin, $headers)) {
+                    array_push($errors, $key);
                 }
             } else {
-                array_push($errors, $to_1);
+                array_push($errors, $key);
             }
         }
 
-        // шаг к следующему ключу
-        next($array);
+
     }
 
     // если не было вызвано ошибок, поменять статус

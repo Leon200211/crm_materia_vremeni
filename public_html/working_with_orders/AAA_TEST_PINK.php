@@ -335,7 +335,7 @@ $info_pink_order = mysqli_query($connect, "SELECT * FROM `description_of_pink_pa
 
 
 if($info_pink_order->num_rows > 0){
-    
+
     $pdf->Ln( 6 );
     $pdf->Cell(40,4, iconv('utf-8', 'windows-1251',"Услуги"),0,10,'L',0); // выводим телефон компании
 

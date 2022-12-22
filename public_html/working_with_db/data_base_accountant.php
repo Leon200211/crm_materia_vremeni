@@ -65,6 +65,8 @@ if(isset($_GET['tb'])){
     }
 }
 
+require_once "../global_functions.php";
+
 ?>
 
 
@@ -205,9 +207,18 @@ if(isset($_GET['tb'])){
                             <tr>
                                 <?php
                             foreach ($mas_2 as $value) {
-                                ?>
+                                if($value == 'price'){
+                                    ?>
+                                    <td class="tb_title_info" style="background-color: #bdbcbc">
+                                        <?= show_normal_price($connect, $select_while['price'],
+                                                      $select_while['provider'], $select_while['currency'], $name) ?>
+                                    </td>
+                                    <?php
+                                }else{
+                                    ?>
                                     <td class="tb_title_info" style="background-color: #bdbcbc"><?= $select_while[$value] ?></td>
-                                <?php
+                                    <?php
+                                }
                             }
                                 ?>
                             </tr>

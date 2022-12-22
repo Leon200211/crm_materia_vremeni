@@ -330,37 +330,45 @@ while ($info_pink_order_room_while = mysqli_fetch_assoc($info_pink_order_room)) 
 
 
 // услуги
-$pdf->Ln( 6 );
-$pdf->Cell(40,4, iconv('utf-8', 'windows-1251',"Услуги"),0,10,'L',0); // выводим телефон компании
-
-$price_pink_title = "Цена" . "\n" . "за единицу";
-$pdf->Cell(1);
-$pdf->Cell(7, 10, iconv('utf-8', 'windows-1251', "№"), 1, 0, 'C', 0);
-$pdf->Cell(80, 10, iconv('utf-8', 'windows-1251', "Наименование"), 1, 0, 'C', 0);
-$pdf->Cell(23, 10, iconv('utf-8', 'windows-1251', "Кол-во"), 1, 0, 'C', 0);
-$x = $pdf->GetX();
-$y = $pdf->GetY();
-$pdf->MultiCell(23, 5, iconv('utf-8', 'windows-1251', $price_pink_title), 1, 'C', 0);
-$pdf->SetXY($x + 23, $y);
-$pdf->Cell(25, 10, iconv('utf-8', 'windows-1251', "Сумма в рублях"), 1, 0, 'C', 0);
-$pdf->ln();
-
 $price_room = 0;
 $info_pink_order = mysqli_query($connect, "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_pink_order' AND `category` = 'services'");
-while ($info_pink_order_while = mysqli_fetch_assoc($info_pink_order)) {
+
+
+if($info_pink_order->num_rows > 0){
+    
+    $pdf->Ln( 6 );
+    $pdf->Cell(40,4, iconv('utf-8', 'windows-1251',"Услуги"),0,10,'L',0); // выводим телефон компании
+
+    $price_pink_title = "Цена" . "\n" . "за единицу";
     $pdf->Cell(1);
-    $pdf->Cell(7, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['id_paragraph']), 1, 0, 'L', 0);
-    $pdf->Cell(80, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['description']), 1, 0, 'L', 0);
-    $pdf->Cell(23, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['quantity']), 1, 0, 'L', 0);
-    $pdf->Cell(23, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['price'] . " руб."), 1, 0, 'L', 0);
-    $pdf->Cell(25, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['quantity'] * $info_pink_order_while['price'] . " руб."), 1, 0, 'C', 0);
-    $price_room += $info_pink_order_while['quantity'] * $info_pink_order_while['price'];
+    $pdf->Cell(7, 10, iconv('utf-8', 'windows-1251', "№"), 1, 0, 'C', 0);
+    $pdf->Cell(80, 10, iconv('utf-8', 'windows-1251', "Наименование"), 1, 0, 'C', 0);
+    $pdf->Cell(23, 10, iconv('utf-8', 'windows-1251', "Кол-во"), 1, 0, 'C', 0);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->MultiCell(23, 5, iconv('utf-8', 'windows-1251', $price_pink_title), 1, 'C', 0);
+    $pdf->SetXY($x + 23, $y);
+    $pdf->Cell(25, 10, iconv('utf-8', 'windows-1251', "Сумма в рублях"), 1, 0, 'C', 0);
     $pdf->ln();
+
+
+
+    while ($info_pink_order_while = mysqli_fetch_assoc($info_pink_order)) {
+        $pdf->Cell(1);
+        $pdf->Cell(7, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['id_paragraph']), 1, 0, 'L', 0);
+        $pdf->Cell(80, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['description']), 1, 0, 'L', 0);
+        $pdf->Cell(23, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['quantity']), 1, 0, 'L', 0);
+        $pdf->Cell(23, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['price'] . " руб."), 1, 0, 'L', 0);
+        $pdf->Cell(25, 5, iconv('utf-8', 'windows-1251', $info_pink_order_while['quantity'] * $info_pink_order_while['price'] . " руб."), 1, 0, 'C', 0);
+        $price_room += $info_pink_order_while['quantity'] * $info_pink_order_while['price'];
+        $pdf->ln();
+    }
+    $pdf->SetFont( 'Arial', '', 12);
+    $pdf->Ln( 2 );
+    $pdf->Cell(40,2, iconv('utf-8', 'windows-1251',"Стоимость: " . $price_room),0,10,'L',0); // выводим телефон компании
+    $pdf->SetFont( 'Arial', '', 9);
+
 }
-$pdf->SetFont( 'Arial', '', 12);
-$pdf->Ln( 2 );
-$pdf->Cell(40,2, iconv('utf-8', 'windows-1251',"Стоимость: " . $price_room),0,10,'L',0); // выводим телефон компании
-$pdf->SetFont( 'Arial', '', 9);
 
 
 

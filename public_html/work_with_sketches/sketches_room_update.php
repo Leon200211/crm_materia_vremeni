@@ -40,6 +40,7 @@ $room = $sketches_main['room'];
 $page = $sketches_main['page'];
 $specification = $sketches_main['specification'];
 
+require_once "../global_functions.php";
 
 ?>
 
@@ -98,7 +99,7 @@ $specification = $sketches_main['specification'];
                 <div class="live_search_new">
                     <select class="js-select2" name="city" placeholder="Выберите город">
                         <?php
-                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' and `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
+                        $sql = "SELECT * FROM `description_of_pink_pages` WHERE `id_pink_order` = '$id_order' AND `room` = '$room' and `category` != 'services' and `category` != 'sewing' and `category` != 'modification'";
                         $select = mysqli_query($connect, $sql);
                         while ($select_while = mysqli_fetch_assoc($select)) {
                             ?>
@@ -206,9 +207,18 @@ $specification = $sketches_main['specification'];
                     <tr>
                         <?php
                         foreach ($mas_test_2 as $value) {
-                            ?>
-                            <td class="tb_title_info"><?= $select_while[$value] ?></td>
-                            <?php
+                            if($value == 'price'){
+                                ?>
+                                <td class="tb_title_info">
+                                    <?= show_normal_price($connect, $select_while['price'],
+                                        $select_while['provider'], $select_while['currency'], $from) ?>
+                                </td>
+                                <?php
+                            }else{
+                                ?>
+                                <td class="tb_title_info"><?= $select_while[$value] ?></td>
+                                <?php
+                            }
                         }
                         ?>
                     </tr>

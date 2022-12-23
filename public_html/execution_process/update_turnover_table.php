@@ -40,10 +40,10 @@ if($type == 1){
 
 
     // дата создания
-    $today = date("d-m-Y");
-    $designer_date = date("d-m-Y");
+    $today = date("d.m.Y");
+    $designer_date = date("d.m.Y");
     $designer_date = date_create($designer_date);
-    $designer_date = date_format($designer_date,"d-m-Y");
+    $designer_date = date_format($designer_date,"d.m.Y");
 
     $sql = "UPDATE `orders_date` SET `date_note` = '$designer_date' WHERE `orders_date`.`id_order` = '$id_order';";
     mysqli_query($connect, $sql);

@@ -85,6 +85,22 @@ function set_notice($connect, $id_user, $id_order){
 }
 
 
+// Добавление важных уведомлений
+function set_notice_important($connect, $id_user, $id_order, $note, $remove){
+
+    // проверяем, существует ли уведомление
+    $prov_notice = mysqli_query($connect, "SELECT * FROM `notice_important` WHERE `id_user` = '$id_user' AND 
+                             `id_order` = '$id_order' AND `note` = '$note' AND `remove` = '$remove'");
+
+    if(empty(mysqli_fetch_assoc($prov_notice)['id_user'])){ // если еще нет уведомлений по этому заказу
+        mysqli_query($connect, "INSERT INTO `notice_important` (`id`, `id_user`, `id_order`, `note`, `remove`)
+        VALUES (NULL, '$id_user', '$id_order', '$note', '$remove')");
+    }
+
+}
+
+
+
 // возвращает имя дизайнера
 function get_designer_name($connect, $id_designer){
 

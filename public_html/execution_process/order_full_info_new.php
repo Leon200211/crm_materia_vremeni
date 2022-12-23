@@ -35,20 +35,31 @@ if($select['executor_id'] != $_SESSION['id_user'] and $_SESSION['state'] != 'adm
     echo "Доступ запрещен";
     die;
 }
+
+$global_executor_id = $select['executor_id'];
+
 // --------------------------------------
 
 
 
 //  -------------------------------
-//  для проверки на уведомления
+//  удаление обычных уведомлений
 $user_id = $_SESSION['id_user'];
 $select_test = mysqli_query($connect, "SELECT * FROM `notice` WHERE `id_user` = '$user_id' AND `id_order` = '$id'");
 $select_test = mysqli_fetch_assoc($select_test);
 if(!empty($select_test['id'])){
     mysqli_query($connect, "DELETE FROM `notice` WHERE `id_user` = '$user_id' AND `id_order` = '$id'");
 }
+//  -------------------------------
+//  удаление важных уведомлений на прочтение
+$select_important_notice = mysqli_query($connect, "SELECT `id` FROM `notice_important` WHERE `id_user` = '$user_id' AND `id_order` = '$id' AND `remove` = 'read'");
+while($select_important_notice_while = mysqli_fetch_assoc($select_important_notice)){
+    if(!empty($select_important_notice_while['id'])){
+        mysqli_query($connect, "DELETE FROM `notice_important` WHERE `id` = '{$select_important_notice_while['id']}'");
+    }
+}
 
-
+require_once "../global_functions.php";
 
 ?>
 
@@ -576,7 +587,14 @@ if(!empty($select_test['id'])){
                     $result = strtotime($today) <= strtotime($end_date_new);
 
                     if($result) {
-                        $sql = mysqli_query($connect, "UPDATE `orders_date` SET `date_end` = '$end_date' WHERE `orders_date`.`id_order` = '$id_pink_order'");
+                        mysqli_query($connect, "UPDATE `orders_date` SET `date_end` = '$end_date_new' WHERE `orders_date`.`id_order` = '$id_pink_order'");
+
+                        // изменил дату готовности цех
+                        $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `id` = '$global_executor_id' OR `state` = 'admin'");
+                        while ($select_while = mysqli_fetch_assoc($select)) {
+                            set_notice_important($connect, $select_while['id'], $id, 'Изменена дата готовности - цех', 'read');
+                        }
+
                     }
                 }
                 // установка примерной даты завершения для дизайнера
@@ -591,7 +609,13 @@ if(!empty($select_test['id'])){
                     $result = strtotime($today) <= strtotime($end_date_new);
 
                     if($result) {
-                        $sql = mysqli_query($connect, "UPDATE `orders_date` SET `date_end_designer` = '$end_date' WHERE `orders_date`.`id_order` = '$id_pink_order'");
+                        mysqli_query($connect, "UPDATE `orders_date` SET `date_end_designer` = '$end_date_new' WHERE `orders_date`.`id_order` = '$id_pink_order'");
+
+                        // изменил дату готовности дизайнер
+                        $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `state` = 'admin'");
+                        while ($select_while = mysqli_fetch_assoc($select)) {
+                            set_notice_important($connect, $select_while['id'], $id, 'Изменена примерная дата готовности - салон', 'read');
+                        }
                     }
                 }
 
@@ -614,14 +638,12 @@ if(!empty($select_test['id'])){
                     $id_executor = $row['executor_id'];
 
                     if (!empty($select_date["date_end"])) {
-                        $end_date_info_workshop = DateTime::createFromFormat('Y-m-d', $select_date["date_end"]);
-                        $end_date_info_workshop = $end_date_info_workshop->format('d-m-Y');
+                        $end_date_info_workshop = $select_date["date_end"];
                     } else {
                         $end_date_info_workshop = '-';
                     }
                     if (!empty($select_date["date_end_designer"])) {
-                        $end_date_info_designer = DateTime::createFromFormat('Y-m-d', $select_date["date_end_designer"]);
-                        $end_date_info_designer = $end_date_info_designer->format('d-m-Y');
+                        $end_date_info_designer = $select_date["date_end_designer"];
                     } else {
                         $end_date_info_designer = '-';
                     }
@@ -965,6 +987,15 @@ if(!empty($select_test['id'])){
             $state_order = $_POST['state_order'];
             $search_get = $_POST['id'];
 
+            //  -------------------------------
+            //  удаление важных уведомлений после изменения статуса
+            $select_important_notice = mysqli_query($connect, "SELECT `id` FROM `notice_important` WHERE `id_order` = '$id' AND `remove` = 'change'");
+            while($select_important_notice_while = mysqli_fetch_assoc($select_important_notice)){
+                if(!empty($select_important_notice_while['id'])){
+                    mysqli_query($connect, "DELETE FROM `notice_important` WHERE `id` = '{$select_important_notice_while['id']}'");
+                }
+            }
+
 
             // !!!!!!!!!!!!!!!!!!!!!
             // для добавления уведомления на заказ
@@ -1015,8 +1046,6 @@ if(!empty($select_test['id'])){
                     set_notice($connect, $select_while['id'], $search_get);
                 }
 
-
-
                 // дата поступления розовой страницы
                 $today = date("d.m.Y");
                 $sql_date = "UPDATE `orders_date` SET `pink_page_arrival` = '$today' WHERE `orders_date`.`id_order` = '$search_get';";
@@ -1031,7 +1060,7 @@ if(!empty($select_test['id'])){
                 while ($select_while = mysqli_fetch_assoc($select)) {
                     set_notice($connect, $select_while['id'], $search_get);
                 }
-            } else if($state_order == "Выдан закройщик"){
+            } else if($state_order == "Выдан закройщику"){
                 // добавляем уведомление
                 $executor_id = mysqli_query($connect, "SELECT * FROM `orders_main_info` WHERE `id_pink_order` = '$search_get'");
                 $executor_id = mysqli_fetch_assoc($executor_id);
@@ -1044,6 +1073,7 @@ if(!empty($select_test['id'])){
                 // дата выдачи закройщику
                 $today = date("d.m.Y");
                 $sql_date = "UPDATE `orders_date` SET `date_delivery_cutter` = '$today' WHERE `orders_date`.`id_order` = '$search_get';";
+
                 $sql_date = mysqli_query($connect, $sql_date);
 
             }  else if($state_order == "Пошив"){
@@ -1081,6 +1111,12 @@ if(!empty($select_test['id'])){
                 while ($select_while = mysqli_fetch_assoc($select)) {
                     set_notice($connect, $select_while['id'], $search_get);
                 }
+
+                // дата поступления розовой страницы
+                $today = date("d.m.Y");
+                $sql_date = "UPDATE `orders_date` SET `departure_date` = '$today' WHERE `orders_date`.`id_order` = '$search_get';";
+                $sql_date = mysqli_query($connect, $sql_date);
+
             } else if($state_order == "Поступил в салон"){
                 // добавляем уведомление
                 $executor_id = mysqli_query($connect, "SELECT * FROM `orders_main_info` WHERE `id_pink_order` = '$search_get'");
@@ -1109,6 +1145,13 @@ if(!empty($select_test['id'])){
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
                     set_notice($connect, $select_while['id'], $search_get);
+
+                    // Важное уведомление
+                    $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `id` = '$global_executor_id' OR `state` = 'admin'");
+                    while ($select_while = mysqli_fetch_assoc($select)) {
+                        set_notice_important($connect, $select_while['id'], $id, 'Возврат дизайнеру', 'change');
+                    }
+
                 }
             }
             // Брак ткани
@@ -1120,6 +1163,13 @@ if(!empty($select_test['id'])){
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
                     set_notice($connect, $select_while['id'], $search_get);
+
+                    // Важное уведомление
+                    $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `id` = '$global_executor_id' OR `state` = 'admin'");
+                    while ($select_while = mysqli_fetch_assoc($select)) {
+                        set_notice_important($connect, $select_while['id'], $id, 'Брак ткани', 'change');
+                    }
+
                 }
             }
             //Перевыбор ткани в салоне
@@ -1131,6 +1181,13 @@ if(!empty($select_test['id'])){
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
                     set_notice($connect, $select_while['id'], $search_get);
+
+                    // Важное уведомление
+                    $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `id` = '$global_executor_id' OR `state` = 'admin'");
+                    while ($select_while = mysqli_fetch_assoc($select)) {
+                        set_notice_important($connect, $select_while['id'], $id, 'Перевыбор ткани в салоне', 'change');
+                    }
+
                 }
             }
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1144,6 +1201,13 @@ if(!empty($select_test['id'])){
                 $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
                     set_notice($connect, $select_while['id'], $search_get);
+
+                    // Важное уведомление
+                    $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `id` = '$global_executor_id' OR `state` = 'admin'");
+                    while ($select_while = mysqli_fetch_assoc($select)) {
+                        set_notice_important($connect, $select_while['id'], $id, 'Возврат ткани', 'change');
+                    }
+
                 }
             }
 
@@ -1159,8 +1223,6 @@ if(!empty($select_test['id'])){
 
             // обновляем статус в бд
             mysqli_query($connect, "UPDATE `orders_main_info` SET `pink_state` = '$state_order' WHERE `id_pink_order` = '$search_get'");
-
-
 
 
             // страница с информацией о изменении статуса (редирект)

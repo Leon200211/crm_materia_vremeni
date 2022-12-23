@@ -27,9 +27,8 @@ if($type == 1){
     $workshop_cost_sewing = $_POST['workshop_cost_sewing'];
     $workshop_cost = $_POST['workshop_cost'];
     $performer = $_POST['performer'];
-    $courier = $_POST['courier'];
 
-    $sql = "UPDATE `turnover_table` SET `workshop_cost_sewing` = '$workshop_cost_sewing', `workshop_cost` = '$workshop_cost', `performer` = '$performer', `courier` = '$courier' WHERE `turnover_table`.`id_order` = '$id_order';";
+    $sql = "UPDATE `turnover_table` SET `workshop_cost_sewing` = '$workshop_cost_sewing', `workshop_cost` = '$workshop_cost', `performer` = '$performer' WHERE `turnover_table`.`id_order` = '$id_order';";
     mysqli_query($connect, $sql);
 
 }else if($type == 2){

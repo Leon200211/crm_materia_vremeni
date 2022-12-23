@@ -184,7 +184,7 @@ require_once "../global_functions.php";
                                     <input name="state_order" id="radio-6" type="radio" value="Пошив">
                                     <label for="radio-6">Пошив</label>
                                 </div>
-                                <div class="form_radio_btn">
+                                <div class="form_radio_btn" id="for_courier_name">
                                     <input name="state_order" id="radio-7" type="radio" value="Ожидание отправки в салон">
                                     <label for="radio-7">Ожидание отправки в салон</label>
                                 </div>
@@ -220,13 +220,47 @@ require_once "../global_functions.php";
                                     <input name="state_order" id="radio-15" type="radio" value="Возврат ткани">
                                     <label for="radio-15">Возврат ткани</label>
                                 </div>
-
-
-                                <div>
-                                    <input type="submit" value="Изменить" class="state_change_button" onclick="return confirm('Подтверждаю');">
-                                </div>
-
                             </div>
+
+
+
+
+
+                            <div id="input_courier_name">
+                                <input class="input_style" id="courier_name" name="courier_name">
+                                <label for="courier_name">Имя курьера</label>
+                            </div>
+                            <div id="input_note_designer">
+                                <input class="input_style" id="note_designer" name="note_designer">
+                                <label for="note_designer">Примечание для дизайнера</label>
+                            </div>
+                            <style>
+                                #input_courier_name {display: none;}
+                                #input_note_designer {display: none;}
+                            </style>
+                            <script type="text/javascript">
+                                var div = document.getElementById('radio-8');
+                                div.addEventListener('click', function (event) {
+                                    $("#input_courier_name").slideToggle();
+                                });
+
+                                var div = document.getElementById('radio-14');
+                                div.addEventListener('click', function (event) {
+                                    $("#input_note_designer").slideToggle();
+                                });
+                                var div = document.getElementById('radio-12');
+                                div.addEventListener('click', function (event) {
+                                    $("#input_note_designer").slideToggle();
+                                });
+                            </script>
+
+                            <div>
+                                <input type="submit" value="Изменить" class="state_change_button" onclick="return confirm('Подтверждаю');">
+                            </div>
+
+
+
+
                         </form>
                         <?php
                         }
@@ -344,7 +378,7 @@ require_once "../global_functions.php";
                             </form>
                             <?php
                         }
-                    } else if($_SESSION['state'] == 'workshop') {
+                    } else if($_SESSION['state'] == 'workshop') {        ////////////////////////////////////////////////////
                         if($id_executor != $_SESSION['id_user']
                             and ($order_state == 'Поступил в цех' or
                                 $order_state == 'Выдан закройщику' or
@@ -378,14 +412,33 @@ require_once "../global_functions.php";
                                     <label for="radio-4">Ожидание отправки в салон</label>
                                 </div>
                                 <div class="form_radio_btn">
-                                    <input name="state_order" id="radio-5" type="radio" value="Брак ткани">
-                                    <label for="radio-5">Брак ткани</label>
+                                    <input name="state_order" id="radio-5" type="radio" value="Доставка в салон">
+                                    <label for="radio-5">Доставка в салон</label>
                                 </div>
-
-                                <div>
-                                    <input type="submit" value="Изменить" class="state_change_button" onclick="return confirm('Подтверждаю');">
+                                <div class="form_radio_btn">
+                                    <input name="state_order" id="radio-6" type="radio" value="Брак ткани">
+                                    <label for="radio-6">Брак ткани</label>
                                 </div>
                             </div>
+
+                            <div id="input_courier_name">
+                                <input class="input_style" id="courier_name" name="courier_name">
+                                <label for="courier_name">Имя курьера</label>
+                            </div>
+                            <style>
+                                #input_courier_name {display: none;}
+                            </style>
+                            <script type="text/javascript">
+                                var div = document.getElementById('radio-5');
+                                div.addEventListener('click', function (event) {
+                                    $("#input_courier_name").slideToggle();
+                                });
+                            </script>
+
+                            <div>
+                                <input type="submit" value="Изменить" class="state_change_button" onclick="return confirm('Подтверждаю');">
+                            </div>
+
                         </form>
                         <?php
                         }else if($id_executor == $_SESSION['id_user']){
@@ -519,7 +572,7 @@ require_once "../global_functions.php";
                                             <label for="radio-1">Поступил в цех</label>
                                         </div>
                                         <div class="form_radio_btn">
-                                            <input name="state_order" id="radio-2 type="radio" value="Выдан закройщику">
+                                            <input name="state_order" id="radio-2" type="radio" value="Выдан закройщику">
                                             <label for="radio-2">Выдан закройщику</label>
                                         </div>
                                         <div class="form_radio_btn">
@@ -531,14 +584,34 @@ require_once "../global_functions.php";
                                             <label for="radio-4">Ожидание отправки в салон</label>
                                         </div>
                                         <div class="form_radio_btn">
-                                            <input name="state_order" id="radio-5" type="radio" value="Брак ткани">
-                                            <label for="radio-5">Брак ткани</label>
+                                            <input name="state_order" id="radio-5" type="radio" value="Доставка в салон">
+                                            <label for="radio-5">Доставка в салон</label>
                                         </div>
-
-                                        <div>
-                                            <input type="submit" value="Изменить" class="state_change_button" onclick="return confirm('Подтверждаю');">
+                                        <div class="form_radio_btn">
+                                            <input name="state_order" id="radio-6" type="radio" value="Брак ткани">
+                                            <label for="radio-6">Брак ткани</label>
                                         </div>
                                     </div>
+
+
+                                    <div id="input_courier_name">
+                                        <input class="input_style" id="courier_name" name="courier_name">
+                                        <label for="courier_name">Имя курьера</label>
+                                    </div>
+                                    <style>
+                                        #input_courier_name {display: none;}
+                                    </style>
+                                    <script type="text/javascript">
+                                        var div = document.getElementById('radio-5');
+                                        div.addEventListener('click', function (event) {
+                                            $("#input_courier_name").slideToggle();
+                                        });
+                                    </script>
+
+                                    <div>
+                                        <input type="submit" value="Изменить" class="state_change_button" onclick="return confirm('Подтверждаю');">
+                                    </div>
+
                                 </form>
                             <?php
                             }
@@ -561,6 +634,12 @@ require_once "../global_functions.php";
                             <a href="order_full_info_marriage.php?id=<?= $id ?>" class="common_back_href">Брак, замена, отмена</a>
                         </div>
                         <?php
+                    }else if($_SESSION['state'] == 'workshop'){
+                        ?>
+                        <div class="executor_page_line_one_block_one_title_line_href">
+                            <a href="order_full_info_marriage.php?id=<?= $id ?>" class="common_back_href">Брак</a>
+                        </div>
+                    <?php
                     }
                     ?>
                     <div class="executor_page_line_one_block_one_title_line_href">
@@ -630,8 +709,8 @@ require_once "../global_functions.php";
                     $sql_date = "SELECT `date_create`, `date_end_designer`, `date_end` FROM `orders_date` WHERE `id_order` = '$id_order'";
                     $select_date = mysqli_query($connect, $sql_date);
                     $select_date = mysqli_fetch_assoc($select_date);
-                    $order_data = DateTime::createFromFormat('Y-m-d', $select_date["date_create"]);
-                    $order_data = $order_data->format('d-m-Y');
+                    $order_data = $select_date["date_create"];
+
 
                     $order_state = $row["pink_state"];
                     $order_id = $row["id_pink_order"];
@@ -786,8 +865,7 @@ require_once "../global_functions.php";
                                         </select>
                                     </div>
                                     <div class="executor_page_line_two_note_edit_item">
-                                        Курьер
-                                        <input class="input_style" type="text" name="courier" value="<?=$select_turnover['courier']?>">
+                                        Курьер: <?=$select_turnover['courier']?>
                                     </div>
                                     <div class="executor_page_line_two_note_edit_item">
                                         <input type="submit" class="common_back_href" name="submit" value="Изменить" />
@@ -1103,11 +1181,28 @@ require_once "../global_functions.php";
                 }
             } else if($state_order == "Доставка в салон"){
 
+                // если курьер не указан
+                if(empty($_POST['courier_name'])){
+                    ?>
+                    <div class="find_info">
+                        <div class="body_result">
+                            <div class="body_result_title">Ошибка! Не указан курьер!</div>
+                            <a href="order_full_info_new.php?id=<?= $search_get ?>" class="common_back_href">Вернуться</a>
+                        </div>
+                    </div>
+                    <?php
+                    die();
+                }
+
+                // сохранение курьера
+                $sql = "UPDATE `turnover_table` SET `courier` = '{$_POST['courier_name']}' WHERE `turnover_table`.`id_order` = '$search_get';";
+                mysqli_query($connect, $sql);
+
                 // добавляем уведомление
-                $executor_id = mysqli_query($connect, "SELECT * FROM `orders_main_info` WHERE `id_pink_order` = '$search_get'");
+                $executor_id = mysqli_query($connect, "SELECT `executor_id` FROM `orders_main_info` WHERE `id_pink_order` = '$search_get'");
                 $executor_id = mysqli_fetch_assoc($executor_id);
                 $executor_id = $executor_id['executor_id'];
-                $select = mysqli_query($connect, "SELECT * FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
+                $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `id` = '$executor_id' OR `state` = 'admin'");
                 while ($select_while = mysqli_fetch_assoc($select)) {
                     set_notice($connect, $select_while['id'], $search_get);
                 }
@@ -1149,7 +1244,7 @@ require_once "../global_functions.php";
                     // Важное уведомление
                     $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `id` = '$global_executor_id' OR `state` = 'admin'");
                     while ($select_while = mysqli_fetch_assoc($select)) {
-                        set_notice_important($connect, $select_while['id'], $id, 'Возврат дизайнеру', 'change');
+                        set_notice_important($connect, $select_while['id'], $id, "Возврат дизайнеру <br> Примечание: {$_POST['note_designer']}", 'change');
                     }
 
                 }
@@ -1185,7 +1280,7 @@ require_once "../global_functions.php";
                     // Важное уведомление
                     $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `id` = '$global_executor_id' OR `state` = 'admin'");
                     while ($select_while = mysqli_fetch_assoc($select)) {
-                        set_notice_important($connect, $select_while['id'], $id, 'Перевыбор ткани в салоне', 'change');
+                        set_notice_important($connect, $select_while['id'], $id, "Перевыбор ткани в салоне <br> Примечание: {$_POST['note_designer']}", 'change');
                     }
 
                 }
@@ -1203,10 +1298,10 @@ require_once "../global_functions.php";
                     set_notice($connect, $select_while['id'], $search_get);
 
                     // Важное уведомление
-                    $select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `id` = '$global_executor_id' OR `state` = 'admin'");
-                    while ($select_while = mysqli_fetch_assoc($select)) {
-                        set_notice_important($connect, $select_while['id'], $id, 'Возврат ткани', 'change');
-                    }
+                    //$select = mysqli_query($connect, "SELECT `id` FROM `users` WHERE `state` = 'workshop' OR `id` = '$global_executor_id' OR `state` = 'admin'");
+                    //while ($select_while = mysqli_fetch_assoc($select)) {
+                    //    set_notice_important($connect, $select_while['id'], $id, 'Возврат ткани', 'change');
+                    //}
 
                 }
             }

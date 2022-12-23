@@ -11,7 +11,7 @@
 
 session_start();
 
-if(empty($_SESSION['user']) OR ($_SESSION['state'] != 'admin')){
+if(empty($_SESSION['user']) OR ($_SESSION['state'] != 'admin' AND $_SESSION['state'] != 'workshop')){
     echo "Доступ запрещен";
     die;
 }
@@ -164,98 +164,138 @@ $info_pink_order = mysqli_query($connect, "SELECT * FROM `description_of_pink_pa
                         <td class="tb_title_info"><?= $info_pink_order_while['quantity'] ?></td>
                         <td class="tb_title_info"><?= $info_pink_order_while['price'] ?></td>
                         <?php
-                        # если выставлена цена поставщика или имеет статус отмена или имеет статус брак или имеет статус замена
-                        if($info_pink_order_while['supplier_price'] != 0 or $info_pink_order_while['additional_info'] == "Отмена" or $info_pink_order_while['additional_info'] == "Брак"  or $info_pink_order_while['additional_info'] == "Замена"){
-                            # если товар имеет статус отмена или имеет статус брак или имеет статус замена, то можем убрать этот статус
-                            if($info_pink_order_while['additional_info'] == "Брак" or $info_pink_order_while['additional_info'] == "Отмена" or $info_pink_order_while['additional_info'] == "Замена"){
-                                ?>
-                                <td style="color:red" align="center" width="60"><?= $info_pink_order_while['additional_info'] ?></td>
+                        if($_SESSION['state'] == 'admin'){
+                            # если выставлена цена поставщика или имеет статус отмена или имеет статус брак или имеет статус замена
+                            if($info_pink_order_while['supplier_price'] != 0 or $info_pink_order_while['additional_info'] == "Отмена" or $info_pink_order_while['additional_info'] == "Брак"  or $info_pink_order_while['additional_info'] == "Замена"){
+                                # если товар имеет статус отмена или имеет статус брак или имеет статус замена, то можем убрать этот статус
+                                if($info_pink_order_while['additional_info'] == "Брак" or $info_pink_order_while['additional_info'] == "Отмена" or $info_pink_order_while['additional_info'] == "Замена"){
+                                    ?>
+                                    <td style="color:red" align="center" width="60"><?= $info_pink_order_while['additional_info'] ?></td>
 
-                                <form action="order_full_info_marriage_updata.php" method="post">
-                                    <input type="hidden" name="id" value="<?= $info_pink_order_while['id'] ?>">
-                                    <input type="hidden" name="id_order" value="<?= $id ?>">
-                                    <!--  Убрать текущий статус-->
-                                    <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Убрать <?= $info_pink_order_while['additional_info'] ?></button></td>
-                                    <td></td>
-                                </form>
-                            <?php
-                                // добавить статус брак или замена
-                            }else {
-                                ?>
-                                <td style="color:green" class="tb_title_info">Доставлено</td>
+                                    <form action="order_full_info_marriage_updata.php" method="post">
+                                        <input type="hidden" name="id" value="<?= $info_pink_order_while['id'] ?>">
+                                        <input type="hidden" name="id_order" value="<?= $id ?>">
+                                        <!--  Убрать текущий статус-->
+                                        <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Убрать <?= $info_pink_order_while['additional_info'] ?></button></td>
+                                        <td></td>
+                                    </form>
+                                    <?php
+                                    // добавить статус брак или замена
+                                }else {
+                                    if($info_pink_order_while['additional_info'] == "Брак (цех)"){
+                                        ?>
+                                        <td style="color:red" class="tb_title_info">Брак (цех)</td>
+                                        <?php
+                                    }else if($info_pink_order_while['additional_info'] == ""){
+                                        ?>
+                                        <td style="color:green" class="tb_title_info">Доставлено</td>
+                                        <?php
+                                    }
+                                    ?>
+                                    <form action="mail_page_marriage.php" method="post">
+                                        <input type="hidden" name="id_in_db" value="<?= $info_pink_order_while['id'] ?>">
+                                        <input type="hidden" name="id" value="<?= $id ?>">
+                                        <input type="hidden" name="id_paragraph" value="<?= $info_pink_order_while['id_paragraph'] ?>">
+                                        <input type="hidden" name="provider" value="<?= $info_pink_order_while['provider'] ?>">
+                                        <input type="hidden" name="description" value="<?= $info_pink_order_while['description'] ?>">
+                                        <input type="hidden" name="quantity" value="<?= $info_pink_order_while['quantity'] ?>">
+                                        <input type="hidden" name="size" value="<?= $info_pink_order_while['size'] ?>">
+                                        <input type="hidden" name="type" value="<?= 'm' ?>">
+                                        <input type="hidden" name="room" value="<?= $room ?>">
+                                        <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Брак</button></td>
+                                    </form>
 
+
+
+                                    <form action="order_full_info_marriage_designer.php" method="post">
+                                        <input type="hidden" name="id_in_db" value="<?= $info_pink_order_while['id'] ?>">
+                                        <input type="hidden" name="id" value="<?= $id ?>">
+                                        <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Замена</button></td>
+                                    </form>
+
+                                    <?php
+                                }
+                                // выставить статус отмены ткани или замены если товар еще не пришел
+                            } else if($info_pink_order_while['supplier_price'] == 0 and $info_pink_order_while['additional_info'] != "Замена" and $info_pink_order_while['additional_info'] != "Заменено") {
+                                ?>
+                                <td class="tb_title_info">Ожидание доставки</td>
+                                <td></td>
                                 <form action="mail_page_marriage.php" method="post">
+                                    <input type="hidden" name="id_paragraph" value="<?= $info_pink_order_while['id_paragraph'] ?>">
                                     <input type="hidden" name="id_in_db" value="<?= $info_pink_order_while['id'] ?>">
                                     <input type="hidden" name="id" value="<?= $id ?>">
-                                    <input type="hidden" name="id_paragraph" value="<?= $info_pink_order_while['id_paragraph'] ?>">
                                     <input type="hidden" name="provider" value="<?= $info_pink_order_while['provider'] ?>">
                                     <input type="hidden" name="description" value="<?= $info_pink_order_while['description'] ?>">
                                     <input type="hidden" name="quantity" value="<?= $info_pink_order_while['quantity'] ?>">
                                     <input type="hidden" name="size" value="<?= $info_pink_order_while['size'] ?>">
-                                    <input type="hidden" name="type" value="<?= 'm' ?>">
+                                    <input type="hidden" name="type" value="<?= 'c' ?>">
                                     <input type="hidden" name="room" value="<?= $room ?>">
-                                    <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Брак</button></td>
+                                    <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Отмена ткани</button></td>
                                 </form>
-
-
 
                                 <form action="order_full_info_marriage_designer.php" method="post">
                                     <input type="hidden" name="id_in_db" value="<?= $info_pink_order_while['id'] ?>">
                                     <input type="hidden" name="id" value="<?= $id ?>">
                                     <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Замена</button></td>
                                 </form>
+                                <?php
+                                // убрать замену если товар еще не пришел
+                            } else if($info_pink_order_while['supplier_price'] == 0 and $info_pink_order_while['additional_info'] == "Замена") {
+                                ?>
+                                <td style="color:red" align="center" width="60"><?= $info_pink_order_while['additional_info'] ?></td>
 
-                            <?php
+                                <form action="order_full_info_marriage_updata.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $info_pink_order_while['id'] ?>">
+                                    <input type="hidden" name="id_order" value="<?= $id ?>">
+                                    <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Убрать <?= $info_pink_order_while['additional_info'] ?></button></td>
+                                    <td></td>
+                                </form>
+                                <?php
+                                // убрать заменено если товар еще не пришел
+                            }else if($info_pink_order_while['supplier_price'] == 0 and $info_pink_order_while['additional_info'] == "Заменено") {
+                                ?>
+                                <td style="color:red" align="center" width="60"><?= $info_pink_order_while['additional_info'] ?></td>
+
+                                <form action="order_full_info_marriage_updata.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $info_pink_order_while['id'] ?>">
+                                    <input type="hidden" name="id_order" value="<?= $id ?>">
+                                    <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Убрать <?= $info_pink_order_while['additional_info'] ?></button></td>
+                                    <td></td>
+                                </form>
+                                <?php
                             }
-                            // выставить статус отмены ткани или замены если товар еще не пришел
-                        } else if($info_pink_order_while['supplier_price'] == 0 and $info_pink_order_while['additional_info'] != "Замена" and $info_pink_order_while['additional_info'] != "Заменено") {
-                            ?>
-                            <td class="tb_title_info">Ожидание доставки</td>
-                            <td></td>
-                            <form action="mail_page_marriage.php" method="post">
-                                <input type="hidden" name="id_paragraph" value="<?= $info_pink_order_while['id_paragraph'] ?>">
-                                <input type="hidden" name="id_in_db" value="<?= $info_pink_order_while['id'] ?>">
-                                <input type="hidden" name="id" value="<?= $id ?>">
-                                <input type="hidden" name="provider" value="<?= $info_pink_order_while['provider'] ?>">
-                                <input type="hidden" name="description" value="<?= $info_pink_order_while['description'] ?>">
-                                <input type="hidden" name="quantity" value="<?= $info_pink_order_while['quantity'] ?>">
-                                <input type="hidden" name="size" value="<?= $info_pink_order_while['size'] ?>">
-                                <input type="hidden" name="type" value="<?= 'c' ?>">
-                                <input type="hidden" name="room" value="<?= $room ?>">
-                                <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Отмена ткани</button></td>
-                            </form>
+                        }else if ($_SESSION['state'] == 'workshop'){
 
-                            <form action="order_full_info_marriage_designer.php" method="post">
-                                <input type="hidden" name="id_in_db" value="<?= $info_pink_order_while['id'] ?>">
-                                <input type="hidden" name="id" value="<?= $id ?>">
-                                <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Замена</button></td>
-                            </form>
-                        <?php
-                            // убрать замену если товар еще не пришел
-                        } else if($info_pink_order_while['supplier_price'] == 0 and $info_pink_order_while['additional_info'] == "Замена") {
-                            ?>
-                            <td style="color:red" align="center" width="60"><?= $info_pink_order_while['additional_info'] ?></td>
+                            if($info_pink_order_while['supplier_price'] != 0){
+                                if($info_pink_order_while['additional_info'] == "Брак (цех)"){
+                                    ?>
+                                    <td style="color:red" class="tb_title_info">Брак (цех)</td>
 
-                            <form action="order_full_info_marriage_updata.php" method="post">
-                                <input type="hidden" name="id" value="<?= $info_pink_order_while['id'] ?>">
-                                <input type="hidden" name="id_order" value="<?= $id ?>">
-                                <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Убрать <?= $info_pink_order_while['additional_info'] ?></button></td>
-                                <td></td>
-                            </form>
-                            <?php
-                            // убрать заменено если товар еще не пришел
-                        }else if($info_pink_order_while['supplier_price'] == 0 and $info_pink_order_while['additional_info'] == "Заменено") {
-                            ?>
-                            <td style="color:red" align="center" width="60"><?= $info_pink_order_while['additional_info'] ?></td>
+                                    <form action="order_full_info_marriage_updata.php" method="post">
+                                        <input type="hidden" name="id" value="<?= $info_pink_order_while['id'] ?>">
+                                        <input type="hidden" name="id_order" value="<?= $id ?>">
+                                        <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Убрать <?= $info_pink_order_while['additional_info'] ?></button></td>
+                                        <td></td>
+                                    </form>
+                                    <?php
+                                }else if($info_pink_order_while['additional_info'] == ""){
+                                    ?>
+                                    <td style="color:green" class="tb_title_info">Доставлено</td>
 
-                            <form action="order_full_info_marriage_updata.php" method="post">
-                                <input type="hidden" name="id" value="<?= $info_pink_order_while['id'] ?>">
-                                <input type="hidden" name="id_order" value="<?= $id ?>">
-                                <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Убрать <?= $info_pink_order_while['additional_info'] ?></button></td>
-                                <td></td>
-                            </form>
-                            <?php
+                                    <form action="order_full_info_marriage_updata.php" method="post">
+                                        <input type="hidden" name="id" value="<?= $info_pink_order_while['id'] ?>">
+                                        <input type="hidden" name="id_order" value="<?= $id ?>">
+
+                                        <input type="hidden" name="type_workshop" value="1">
+
+                                        <td><button type="submit" class="common_button" onclick="return confirm('Подтверждаю');">Брак (цех)</button></td>
+                                    </form>
+                                    <?php
+                                }
+                            }
+
                         }
+
 
                         ?>
                     </tr>

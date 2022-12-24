@@ -37,6 +37,7 @@ if($select['executor_id'] != $_SESSION['id_user'] and $_SESSION['state'] != 'adm
 }
 
 $global_executor_id = $select['executor_id'];
+$global_order_state = $select['pink_state'];
 
 // --------------------------------------
 
@@ -132,6 +133,20 @@ require_once "../global_functions.php";
                     <div class="executor_page_line_one_block_one_title_line_href">
                         <a href="<?="../assets/price_pdf/price_pdf_"  . $id . ".pdf"?>?buster=<?= time() ?>"  target='_blank' class="common_back_href">Эскизы документ</a>
                     </div>
+
+                    <?php
+                    if($_SESSION['state'] == 'admin' or
+                    ($_SESSION['state'] == 'designer' and $_SESSION['id_user']== $global_executor_id and ($global_order_state == 'Поступил в салон' or $global_order_state == 'Доставка клиенту')) or
+                    ($_SESSION['state'] == 'workshop' and $_SESSION['id_user'] == $global_executor_id)){
+                        ?>
+                        <div class="executor_page_line_one_block_one_title_line_href">
+                            <a href="create_delivery_acceptance_certificate.php?id=<?= $id ?>" target="_blank" class="common_back_href">Сгенерировать АКТ</a>
+                        </div>
+
+                    <?php
+                    }
+                    ?>
+
                 </div>
 
                 <div class="executor_page_line_one_block_one_line"></div>
